@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+            <link rel="stylesheet" href="{{ __base_uri }}/lib/bootstrap-3.3.6/css/bootstrap.min.css">
+            <link rel="stylesheet" href="{{ __base_uri }}/css/style.css">
+            
+            <script src="{{ __base_uri }}/lib/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+            <title>{% block title %}{% endblock %} - WOODparts Finland</title>
+        {% endblock %}
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div id="header">
+                        <img alt='WOODparts Finland' src="{{ __header_img_uri }}" id="header-img">
+                    </div>
+                </div>
+            </div>
+            <div class="row">{% block content %}{% endblock %}</div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div id="footer">
+                        <img alt='solutions for wood design' src="{{ __footer_img_uri }}" id="footer-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
