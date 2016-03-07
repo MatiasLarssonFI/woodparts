@@ -18,11 +18,24 @@
 # 
 
 RewriteEngine On
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule "^/?$" "/index.php"
-RewriteRule "^/?([a-zA-Z]{2})/?$" "/index.php?language=$1"
-RewriteRule "^/?([a-zA-Z]{2})/([^/]+)/?$" "/index.php?language=$1&action=$2"
-RewriteRule "^/?([a-zA-Z]{2})/([^/]+)/(.+)/?$" "/index.php?language=$1&action=$2&params=$3"
-RewriteRule "^/?([a-zA-Z]{3,})/?$" "/index.php?action=$1"
-RewriteRule "^/?([a-zA-Z]{3,})/([^/]+)/?$" "/index.php?action=$1&params=$2"
+RewriteRule "^/?$" "/index.php" [L]
+RewriteRule "^/?([a-zA-Z]{2})/?$" "/index.php?language=$1" [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule "^/?([a-zA-Z]{2})/([^/]+)/?$" "/index.php?language=$1&action=$2" [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule "^/?([a-zA-Z]{2})/([^/]+)/(.+)/?$" "/index.php?language=$1&action=$2&params=$3" [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule "^/?([a-zA-Z]{3,})/?$" "/index.php?action=$1" [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule "^/?([a-zA-Z]{3,})/([^/]+)/?$" "/index.php?action=$1&params=$2" [L]
