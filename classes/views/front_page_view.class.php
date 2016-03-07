@@ -27,7 +27,7 @@ class FrontPageView extends AbstractView {
             ),
             "sidebar_imgs" => array(),
             "logo_url" => \SiteConfigFactory::get()->get_site_config()->base_uri() . 
-                            "/data/img/logo_frontpage.png"
+                            "/data/img/front-logo.png"
         );
     }
 }
