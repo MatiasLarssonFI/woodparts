@@ -1,6 +1,7 @@
 <?php
 
 require_once(dirname(__FILE__) . "/dbif.class.php");
+require_once(dirname(__FILE__) . "/site_config_factory.class.php");
 
 
 /**
