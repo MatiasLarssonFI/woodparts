@@ -40,6 +40,25 @@ class DBIF {
     }
     
     
+    /**
+     * Returns ISO-3166 -codes of the supported languages.
+     * 
+     * @return string[]
+     */
+    public function get_language_codes() {
+        $ret = array();
+        
+        $stm = $this->_pdo->prepare("SELECT DISTINCT language FROM ui_text");
+        $stm->execute();
+
+        while ($row = $stm->fetch()) {
+            $ret[] = $row["language"];
+        }
+        
+        return $ret;
+    }
+    
+    
     protected function __construct() {
         $db_login = SiteConfigFactory::get()->get_site_config()->db_login_params();
         try {
