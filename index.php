@@ -10,11 +10,12 @@ try {
     $request = array_merge(
                     array(
                         "action" => "", 
-                        "params" => array(),
+                        "params" => "",
                         "language" => SiteConfigFactory::get()->get_site_config()->default_language()
                     ),
                 $_GET
             );
+    $request["params"] = explode("/", $request["params"]); // :<
     UITextStorage::get()->try_change_language($request["language"]);
     Views\ViewFactory::get()->get_view($request["action"], $request["params"])->render();
 } catch (Exception $e) {

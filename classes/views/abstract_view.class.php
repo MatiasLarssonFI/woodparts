@@ -14,16 +14,19 @@ require_once(dirname(__FILE__) . "/../../lib/Twig-1.24.0/Twig-1.24.0/lib/Twig/Au
  */
 abstract class AbstractView implements IView {
     private $_params;
+    private $_widgets;
     
     
     /**
      * Constructor.
      * 
      * @param mixed[] $params An associative array of the view parameters, [ "param_name" => "param value", ... ]
+     * @param IWidget[] $widgets [ "lang" => lang_widget ]
      */
-    public function __construct(array $params) {
+    public function __construct(array $params, array $widgets) {
         $this->validate_params($params);
         $this->_params = $params;
+        $this->_widgets = $widgets;
     }
     
     
@@ -34,13 +37,13 @@ abstract class AbstractView implements IView {
         
         $data = $this->get_view_data($this->_params);
         
-        \Session::get()->generate_csrf_token();
         $data["__csrf_token"] = \Session::get()->get_csrf_token();
         $data["__base_uri"] = \SiteConfigFactory::get()->get_site_config()->base_uri();
         $data["__header_img_uri"] = \SiteConfigFactory::get()->get_site_config()->base_uri() .
                                         "/data/img/header.png";
         $data["__footer_img_uri"] = \SiteConfigFactory::get()->get_site_config()->base_uri() .
                                         "/data/img/footer.png";
+        $data["__widgets"] = $this->_widgets;
         
         echo $twig->render($this->get_template_name(), $data);
     }
