@@ -33,11 +33,13 @@ class ViewFactory {
      * Returns the view to serve given action.
      * 
      * @param string $action The action name
+     * @param string[] $params The action parameters
+     * @param string $language Current language
      * @return IView
      */
-    public function get_view($action, $params) {
+    public function get_view($action, array $params, $language) {
         $widgets = array(
-            "lang" => new \LangWidget($action, $params),
+            "lang" => new \LangWidget($action, $params, $language),
             "nav" => new \NavWidget($action, $this->get_actions()),
             "img_bar" => new \ImgBarWidget()
         );
@@ -56,7 +58,7 @@ class ViewFactory {
     
     
     private function get_actions() {
-        return array("", "gallery", "services", "contact");
+        return array("", "services", "gallery", "contact");
     }
     
     
