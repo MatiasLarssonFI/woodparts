@@ -5,6 +5,12 @@ require_once(dirname(__FILE__) . "/isite_config.class.php");
 
 class ProductionSiteConfig implements ISiteConfig {
     public function base_uri() {
+        if (strpos($_SERVER["HTTP_HOST"], "martinlarsson.fi") !== false) {
+            // if the request header "Host" is "martinlarsson.fi",
+            // then use that
+            return "http://martinlarsson.fi";
+        }
+        
         return "http://woodparts.fi";
     }
     
@@ -18,8 +24,8 @@ class ProductionSiteConfig implements ISiteConfig {
         //TBD
         return array(
             "host" => "localhost",
-            "dbname" => "woodparts_16",
-            "user" => "user",
+            "dbname" => "int43835_wpdb",
+            "user" => "int43835_wpdb",
             "pass" => "pass"
         );
     }
