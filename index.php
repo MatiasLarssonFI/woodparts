@@ -19,6 +19,6 @@ try {
     UITextStorage::get()->try_change_language($request["language"]);
     Views\ViewFactory::get()->get_view($request["action"], $request["params"], $request["language"])->render();
 } catch (Exception $e) {
-    $view = new Views\ExceptionView(array("exception" => $e));
+    $view = new Views\ExceptionView(array("exception" => $e), array());
     $view->render();
 }
