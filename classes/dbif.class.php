@@ -59,6 +59,37 @@ class DBIF {
     }
     
     
+    /**
+     * Get the gallery images.
+     * 
+     * Calls cb_store_row on each row.
+     */
+    public function get_gallery_images($cb_store_row) {
+        $stm = $this->_pdo->prepare("SELECT thumb_url, original_url, name, description, id FROM gallery_image where is_published");
+        $stm->execute();
+        
+        while ($row = $stm->fetch()) {
+            $cb_store_row($row);
+        }
+    }
+    
+    
+    
+    /**
+     * Get the image bar images.
+     * 
+     * Calls cb_store_row on each row.
+     */
+    public function get_img_bar_images($cb_store_row) {
+        $stm = $this->_pdo->prepare("SELECT thumb_url, id FROM gallery_image WHERE is_bar_img and is_published");
+        $stm->execute();
+        
+        while ($row = $stm->fetch()) {
+            $cb_store_row($row);
+        }
+    }
+    
+    
     protected function __construct() {
         $db_login = SiteConfigFactory::get()->get_site_config()->db_login_params();
         try {

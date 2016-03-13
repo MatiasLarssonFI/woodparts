@@ -3,6 +3,8 @@
 namespace Views;
 
 require_once(dirname(__FILE__) . "/front_page_view.class.php");
+require_once(dirname(__FILE__) . "/gallery_view.class.php");
+
 require_once(dirname(__FILE__) . "/../lang_widget.class.php");
 require_once(dirname(__FILE__) . "/../nav_widget.class.php");
 require_once(dirname(__FILE__) . "/../img_bar_widget.class.php");
@@ -46,6 +48,8 @@ class ViewFactory {
         
         if ($action === "") {
             return new FrontPageView(array(), $widgets);
+        } else if ($action === "gallery") {
+            return new GalleryView(array(), $widgets);
         }
         
         // Bad request: redirect to front page

@@ -1,6 +1,7 @@
 <?php
 
 require_once(dirname(__FILE__) . "/iwidget.class.php");
+require_once(dirname(__FILE__) . "/dbif.class.php");
 
 
 class ImgBarWidget implements IWidget {
