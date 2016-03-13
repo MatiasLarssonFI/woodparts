@@ -21,12 +21,12 @@ class ProductionSiteConfig implements ISiteConfig {
     
     
     public function db_login_params() {
-        //TBD
+        $jso = json_decode(file_get_contents(dirname(__FILE__) . "/../../../db_creds.json"));
         return array(
-            "host" => "localhost",
-            "dbname" => "int43835_wpdb",
-            "user" => "int43835_wpdb",
-            "pass" => "pass"
+            "host" => $jso->host,
+            "dbname" => $jso->dbname,
+            "user" => $jso->user,
+            "pass" => $jso->pass
         );
     }
 }
