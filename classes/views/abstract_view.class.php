@@ -5,6 +5,7 @@ namespace Views;
 require_once(dirname(__FILE__) . "/iview.class.php");
 require_once(dirname(__FILE__) . "/../session.class.php");
 require_once(dirname(__FILE__) . "/../site_config_factory.class.php");
+require_once(dirname(__FILE__) . "/../dbif.class.php");
 
 require_once(dirname(__FILE__) . "/../../lib/Twig-1.24.0/Twig-1.24.0/lib/Twig/Autoloader.php");
 
@@ -37,13 +38,14 @@ abstract class AbstractView implements IView {
         
         $data = $this->get_view_data($this->_params);
         
+        $base_uri = \SiteConfigFactory::get()->get_site_config()->base_uri();
+        
         $data["__csrf_token"] = \Session::get()->get_csrf_token();
-        $data["__base_uri"] = \SiteConfigFactory::get()->get_site_config()->base_uri();
-        $data["__header_img_uri"] = \SiteConfigFactory::get()->get_site_config()->base_uri() .
-                                        "/data/img/header.png";
-        $data["__footer_img_uri"] = \SiteConfigFactory::get()->get_site_config()->base_uri() .
-                                        "/data/img/footer.png";
+        $data["__base_uri"] = $base_uri;
+        $data["__header_img_uri"] = "{$base_uri}/data/img/header.png";
+        $data["__footer_img_uri"] = $base_uri . \DBIF::get()->get_footer_img_uri();
         $data["__widgets"] = $this->_widgets;
+        $data["__color_css_uri"] = $base_uri . \DBIF::get()->get_color_css_uri();
         
         echo $twig->render($this->get_template_name(), $data);
     }
