@@ -1,0 +1,10 @@
+main {
+    border-top: 1px solid #C0C0C0;
+    border-bottom: 1px solid #C0C0C0;
+}
+
+
+.img-bar {
+    border: 2px solid #C0C0C0;
+    box-shadow: 2px 0px 5px #C0C0C0;
+}
