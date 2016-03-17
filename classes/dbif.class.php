@@ -81,7 +81,7 @@ class DBIF {
      * Calls cb_store_row on each row.
      */
     public function get_img_bar_images($cb_store_row) {
-        $stm = $this->_pdo->prepare("SELECT thumb_url, id FROM gallery_image WHERE is_bar_img and is_published");
+        $stm = $this->_pdo->prepare("SELECT thumb_url, name, id FROM gallery_image WHERE is_bar_img and is_published");
         $stm->execute();
         
         while ($row = $stm->fetch()) {
@@ -90,12 +90,26 @@ class DBIF {
     }
     
     
+    public function get_color_css_uri() {
+        $stm = $this->_pdo->prepare("SELECT `value` from config where `key` = 'color_css_uri'");
+        $stm->execute();
+        return $stm->fetchColumn();
+    }
+    
+    
+    public function get_footer_img_uri() {
+        $stm = $this->_pdo->prepare("SELECT `value` from config where `key` = 'footer_img_uri'");
+        $stm->execute();
+        return $stm->fetchColumn();
+    }
+    
+    
     protected function __construct() {
         $db_login = SiteConfigFactory::get()->get_site_config()->db_login_params();
         try {
             $this->_pdo = new PDO("mysql:host={$db_login["host"]};dbname={$db_login["dbname"]}", "{$db_login["user"]}", "{$db_login["pass"]}");
         } catch (PDOException $e) {
-            die("uh, oh um {$e->getMessage()} ...sorry about that. We're fixing the problem and getting back up ASAP.");
+            die("uh, oh error " . base64_encode($e->getMessage()) . " ...sorry about that. We're fixing the problem and getting back up ASAP.");
         }
 
         $this->_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
