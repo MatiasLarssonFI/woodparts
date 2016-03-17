@@ -1,6 +1,6 @@
 /*.png
 /*.jpg
-!/footer.*
-!/header.*
+!/footer-*.png
+!/header-*.png
 !/front-logo.*
 /*.xcf
