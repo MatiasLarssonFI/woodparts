@@ -7,7 +7,6 @@ require_once(dirname(__FILE__) . "/gallery_view.class.php");
 
 require_once(dirname(__FILE__) . "/../lang_widget.class.php");
 require_once(dirname(__FILE__) . "/../nav_widget.class.php");
-require_once(dirname(__FILE__) . "/../img_bar_widget.class.php");
 require_once(dirname(__FILE__) . "/../site_config_factory.class.php");
 
 
@@ -42,8 +41,7 @@ class ViewFactory {
     public function get_view($action, array $params, $language) {
         $widgets = array(
             "lang" => new \LangWidget($action, $params, $language),
-            "nav" => new \NavWidget($action, $this->get_actions()),
-            "img_bar" => new \ImgBarWidget()
+            "nav" => new \NavWidget($action, $this->get_actions())
         );
         
         if ($action === "") {
