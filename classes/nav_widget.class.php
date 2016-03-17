@@ -40,10 +40,11 @@ class NavWidget implements IWidget {
         
         
         return "
-        <div class='lang-widget'>
-            <ul class='nav nav-pills'>
+            <ul class='hidden-xs hidden-sm nav nav-pills'>
                 {$nav_links}
             </ul>
-        </div>";
+            <ul class='hidden-md hidden-lg nav nav-pills nav-stacked'>
+                {$nav_links}
+            </ul>";
     }
 }

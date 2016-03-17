@@ -30,14 +30,17 @@ class LangWidget implements IWidget {
         $action = $this->_action;
         $language = $this->_language;
         $links_html = implode("", array_map(function($lang) use ($base_uri, $action) {
-            return "<li><a href='{$base_uri}/{$lang}/{$action}'>" . strtoupper($lang) . "</a></li>";
+            return "<li><a href='{$base_uri}/{$lang}/{$action}'><strong>" . strtoupper($lang) . "</strong></a></li>";
         }, array_filter(DBIF::get()->get_language_codes(), function($code) use ($language) {
             return $code !== $language;
         })));
         
         return "
         <div class='lang-widget'>
-            <ul class='nav nav-pills'>
+            <ul class='hidden-xs hidden-sm nav nav-pills nav-stacked'>
+                {$links_html}
+            </ul>
+            <ul class='hidden-md hidden-lg nav nav-pills'>
                 {$links_html}
             </ul>
         </div>";
