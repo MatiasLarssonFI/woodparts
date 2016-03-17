@@ -9,7 +9,7 @@
 <div id="wp-gallery-images" class="row">
 {% for image in images %}
     <div class="col-xs-4 col-md-2">
-        <a href="{{ __base_uri }}{{ image.get_original_url }}" title="{{ image.get_name }}" data-gallery>
+        <a href="{{ __base_uri }}{{ image.get_original_url }}" title="{{ image.get_name }}" data-gallery data-img_id="{{ image.get_id }}">
             <img class="img-responsive" src="{{ __base_uri }}{{ image.get_thumb_url }}" alt="{{ image.get_name }}">
         </a>
     </div>
@@ -28,7 +28,7 @@
     <ol class="indicator"></ol>
     <!-- The modal dialog, which will be used to wrap the lightbox content -->
     <div class="modal fade">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" aria-hidden="true">&times;</button>
