@@ -6,15 +6,17 @@
 {% block title %}{{ strings.page_title }}{% endblock %}
 
 {% block content %}
-<div id="wp-gallery-images" class="row">
-{% for image in images %}
-    <div class="col-xs-4 col-md-2">
-        <a href="{{ __base_uri }}{{ image.get_original_url }}" title="{{ image.get_name }}" data-gallery data-img_id="{{ image.get_id }}">
-            <img class="img-responsive" src="{{ __base_uri }}{{ image.get_thumb_url }}" alt="{{ image.get_name }}">
-        </a>
+<main>
+    <div id="wp-gallery-images" class="row">
+    {% for image in images %}
+        <div class="col-xs-4 col-md-2">
+            <a href="{{ __base_uri }}{{ image.get_original_url }}" title="{{ image.get_name }}" data-gallery data-img_id="{{ image.get_id }}">
+                <img class="img-responsive gallery-img" src="{{ __base_uri }}{{ image.get_thumb_url }}" alt="{{ image.get_name }}">
+            </a>
+        </div>
+    {% endfor %}
     </div>
-{% endfor %}
-</div>
+</main>
 
 <div id="blueimp-gallery" class="blueimp-gallery">
     <!-- The container for the modal slides -->
@@ -51,19 +53,12 @@
 </div>
 <script src="{{ __base_uri }}/lib/Gallery-2.18.2/js/jquery.blueimp-gallery.min.js"></script>
 <script src="{{ __base_uri }}/lib/Bootstrap-Image-Gallery-3.4.2/js/bootstrap-image-gallery.min.js"></script>
+<script src="{{ __base_uri }}/js/gallery.js"></script>
 <script>
-!function($) {
-    $(document).ready(function() {
-        var modal = $("#blueimp-gallery");
-        var modal_body = modal.find(".modal-body");
-        var modal_title = modal.find(".modal-title");
-        var images = $("#wp-gallery-images");
-        
-        // Change modal title
-        modal.on("bs.modal.shown", function() {
-            //modal_title.text(images.find("a[href='" + modal_body.find("img").attr("src") +"']").attr("title"));
+    !function($) {
+        $(document).ready(function() {
+            wp.gallery.update();
         });
-    });
-}(jQuery);
+    }(jQuery);
 </script>
 {% endblock %}
