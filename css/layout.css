@@ -8,6 +8,11 @@ main {
 }
 
 
-.img-bar-img {
+.img-bar-img, .gallery-img {
     margin-bottom: 1em;
+}
+
+
+.woodparts-nav > li > a {
+    border-radius: 0px;
 }

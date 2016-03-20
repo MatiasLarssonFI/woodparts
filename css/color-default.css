@@ -1,10 +1,9 @@
 main {
     border-top: 1px solid #C0C0C0;
-    border-bottom: 1px solid #C0C0C0;
 }
 
 
-.img-bar-img {
+.img-bar-img, .gallery-img {
     border: 2px solid #C0C0C0;
     box-shadow: 2px 0px 5px #C0C0C0;
 }
@@ -13,4 +12,21 @@ main {
 .lang-widget a {
     border: 1px solid #dfdfdf;
     color: #000080;
+}
+
+
+.woodparts-nav > li > a,
+.woodparts-nav > li > a:hover,
+.woodparts-nav > li > a:visited {
+    color: #000080;
+    font-family: monospace;
+}
+
+
+.woodparts-nav > li.active > a,
+.woodparts-nav > li.active > a:focus,
+.woodparts-nav > li.active > a:hover {
+    background-color: #fff;
+    color: #000080;
+    border-top: 1px solid #c0c0c0;
 }
