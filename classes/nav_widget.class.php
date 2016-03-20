@@ -40,10 +40,10 @@ class NavWidget implements IWidget {
         
         
         return "
-            <ul class='hidden-xs hidden-sm nav nav-pills'>
+            <ul class='hidden-xs hidden-sm nav nav-pills woodparts-nav'>
                 {$nav_links}
             </ul>
-            <ul class='hidden-md hidden-lg nav nav-pills nav-stacked'>
+            <ul class='hidden-md hidden-lg nav nav-pills nav-stacked woodparts-nav'>
                 {$nav_links}
             </ul>";
     }
