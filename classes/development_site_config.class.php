@@ -14,7 +14,6 @@ class DevelopmentSiteConfig implements ISiteConfig {
     
     
     public function db_login_params() {
-        //TBD
         return array(
             "host" => "localhost",
             "dbname" => "woodparts_16",
