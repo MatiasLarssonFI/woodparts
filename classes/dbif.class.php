@@ -104,6 +104,13 @@ class DBIF {
     }
     
     
+    public function get_header_img_uri() {
+        $stm = $this->_pdo->prepare("SELECT `value` from config where `key` = 'header_img_uri'");
+        $stm->execute();
+        return $stm->fetchColumn();
+    }
+    
+    
     protected function __construct() {
         $db_login = SiteConfigFactory::get()->get_site_config()->db_login_params();
         try {

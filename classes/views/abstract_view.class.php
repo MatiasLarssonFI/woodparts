@@ -42,7 +42,7 @@ abstract class AbstractView implements IView {
         
         $data["__csrf_token"] = \Session::get()->get_csrf_token();
         $data["__base_uri"] = $base_uri;
-        $data["__header_img_uri"] = "{$base_uri}/data/img/header.png";
+        $data["__header_img_uri"] = $base_uri . \DBIF::get()->get_header_img_uri();
         $data["__footer_img_uri"] = $base_uri . \DBIF::get()->get_footer_img_uri();
         $data["__widgets"] = $this->_widgets;
         $data["__color_css_uri"] = $base_uri . \DBIF::get()->get_color_css_uri();
