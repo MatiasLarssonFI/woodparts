@@ -12,6 +12,24 @@ main {
 .lang-widget a {
     border: 1px solid #dfdfdf;
     color: #000080;
+    background-color: #eee;
+}
+
+
+.lang-widget li > a:hover {
+    border-color: #000080;
+}
+
+
+.lang-widget .nav > li + li {
+    margin-left: .5em;
+    margin-top: 0;
+}
+
+
+.lang-widget .nav.nav-stacked > li + li {
+    margin-top: .5em;
+    margin-left : 0;
 }
 
 
