@@ -25,10 +25,11 @@ class NavWidget implements IWidget {
     public function get_html() {
         $base_uri = \SiteConfigFactory::get()->get_site_config()->base_uri();
         $texts = \UITextStorage::get();
+        $lang = $texts->get_language();
         $current_action = $this->_action;
         
-        $nav_links = implode("", array_map(function ($action) use ($texts, $current_action, $base_uri) {
-            $url = "{$base_uri}/{$action}";
+        $nav_links = implode("", array_map(function ($action) use ($texts, $lang, $current_action, $base_uri) {
+            $url = "{$base_uri}/{$lang}/{$action}";
             if ($action !== "") {
                 $title = $texts->text("NAV_" . strtoupper($action));
             } else {

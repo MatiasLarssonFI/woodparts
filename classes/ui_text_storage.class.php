@@ -57,6 +57,11 @@ class UITextStorage {
     }
     
     
+    public function get_language() {
+        return $this->_current_language;
+    }
+    
+    
     private function load_texts($language) {
         $texts = &$this->_texts;
         DBIF::get()->get_ui_texts($language, function(array $row) use(&$texts) {
