@@ -62,18 +62,4 @@ class GalleryImageFactory {
         
         return $ret;
     }
-    
-    
-    protected function make_site_config() {
-        if ($_SERVER["REMOTE_ADDR"] === "127.0.0.1") { // topkek
-            return new DevelopmentSiteConfig();
-        } else {
-            return new ProductionSiteConfig();
-        }
-    }
-    
-    
-    protected function __construct() {
-        $this->_site_config = $this->make_site_config();
-    }
 }
