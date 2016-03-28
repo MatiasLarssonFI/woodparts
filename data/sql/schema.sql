@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 17, 2016 at 10:19 PM
+-- Generation Time: Mar 28, 2016 at 05:44 PM
 -- Server version: 5.5.47-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.14
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `config` (
   `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `time_created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `config`
@@ -41,7 +41,8 @@ CREATE TABLE IF NOT EXISTS `config` (
 
 INSERT INTO `config` (`id`, `key`, `value`, `time_edited`, `time_created`) VALUES
 (1, 'color_css_uri', '/css/color-default.css', NULL, '2016-03-13 22:00:00'),
-(2, 'footer_img_uri', '/data/img/footer-grey-blue.png', '2016-03-17 20:18:00', '2016-03-16 22:00:00');
+(2, 'footer_img_uri', '/data/img/footer-grey-blue.png', '2016-03-17 20:18:00', '2016-03-16 22:00:00'),
+(3, 'header_img_uri', '/data/img/header.png', '2016-03-26 17:34:29', '2016-03-25 22:00:00');
 
 -- --------------------------------------------------------
 
@@ -115,6 +116,32 @@ INSERT INTO `gallery_image` (`id`, `name`, `description`, `thumb_url`, `original
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `service`
+--
+
+CREATE TABLE IF NOT EXISTS `service` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` text COLLATE utf8_swedish_ci NOT NULL,
+  `text` text COLLATE utf8_swedish_ci NOT NULL,
+  `img_uri` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `gallery_img_id` int(11) NOT NULL,
+  `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `time_created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `service`
+--
+
+INSERT INTO `service` (`id`, `title`, `text`, `img_uri`, `gallery_img_id`, `time_edited`, `time_created`) VALUES
+(1, '{\n    "fi" : "Prototyypit",\n    "se" : "Prototyper",\n    "en" : "Prototypes"\n}', '{\r\n    "fi" : "Valmistamme prototyyppejä yhteistyössä sisustussuunnittelijoiden, arkkitehtien ja muotoilijoiden kanssa.",\r\n\r\n    "se" : "Vi tillverkar prototyper i samarbete med formgivare, designers och arkitekter.",\r\n\r\n    "en" : "We manufacture prototypes for people who are involved in product development. Using cold laminating technique, a vacuum press and cnc-routing we can achieve high quality at an affordable price. We can also produce small series of medium sized wood products."\r\n}', '/data/img/services/prototypes.jpg', 9, '2016-03-28 13:30:37', '2016-03-27 21:00:00'),
+(2, '{\r\n    "fi" : "Tuotekehityspalvelut",\r\n    "se" : "Produktutveckling",\r\n    "en" : "Product development"\r\n}', '{\r\n    "fi" : "Tuotamme puumalleja, havainnekuvia, kolmiulotteisia tietokonemalleja, piirustuksia, vektorointeja ja pienoismalleja.",\r\n\r\n    "se" : "Vi producerar lösningar för produktutveckling som tex trämodeller, illustrationer och ritningar.",\r\n\r\n    "en" : "We also take an active part in product development, supporting teams with booth know-how and various mockups."\r\n}', '/data/img/services/development.jpg', 11, '2016-03-28 13:34:32', '2016-03-27 21:00:00'),
+(3, '{\r\n    "fi" : "3D-suunnittelu",\r\n    "se" : "3D-design",\r\n    "en" : "Visualisation"\r\n}', '{\r\n    "fi" : "Suunnittelupalvelumme kattaa messuosastojen, sisustuksien, kalusteiden sekä pienesineiden mallinnukset. Tuotoksina havainnekuvat, piirustukset ym.",\r\n\r\n    "se" : "3D-modeller, illustrationer och ritningar av mässmontrar, inredningslösningar, möbler och småföremål är exempel på lösningar vi erbjuder.",\r\n\r\n    "en" : "We produce computerized models and pictures that help you visualize and share your ideas with costumers and partners."\r\n}', '/data/img/services/3d.png', 18, '2016-03-28 14:10:16', '2016-03-27 21:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ui_text`
 --
 
@@ -127,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `ui_text` (
   `time_created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   UNIQUE KEY `lang_code_uniq` (`language`,`code`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `ui_text`
@@ -157,7 +184,10 @@ INSERT INTO `ui_text` (`id`, `language`, `code`, `content`, `time_edited`, `time
 (21, 'fi', 'NAV_CONTACT', 'Yhteydenotto', NULL, '2016-03-11 22:00:00'),
 (22, 'en', 'GALLERY_TITLE', 'Gallery', NULL, '2016-03-12 22:00:00'),
 (23, 'fi', 'GALLERY_TITLE', 'Galleria', NULL, '2016-03-12 22:00:00'),
-(24, 'se', 'GALLERY_TITLE', 'Galleri', NULL, '2016-03-12 22:00:00');
+(24, 'se', 'GALLERY_TITLE', 'Galleri', NULL, '2016-03-12 22:00:00'),
+(25, 'en', 'SERVICES_TITLE', 'Services', NULL, '2016-03-12 20:00:00'),
+(26, 'fi', 'SERVICES_TITLE', 'Palvelut', NULL, '2016-03-12 20:00:00'),
+(27, 'se', 'SERVICES_TITLE', 'Tjänster', NULL, '2016-03-12 20:00:00');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -90,6 +90,21 @@ class DBIF {
     }
     
     
+    /**
+     * Get the services.
+     * 
+     * Calls cb_store_row on each row.
+     */
+    public function get_services($cb_store_row) {
+        $stm = $this->_pdo->prepare("SELECT title, text, img_uri, gallery_img_id FROM service");
+        $stm->execute();
+        
+        while ($row = $stm->fetch()) {
+            $cb_store_row($row);
+        }
+    }
+    
+    
     public function get_color_css_uri() {
         $stm = $this->_pdo->prepare("SELECT `value` from config where `key` = 'color_css_uri'");
         $stm->execute();
