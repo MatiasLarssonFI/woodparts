@@ -21,18 +21,6 @@ main {
 }
 
 
-.lang-widget .nav > li + li {
-    margin-left: .5em;
-    margin-top: 0;
-}
-
-
-.lang-widget .nav.nav-stacked > li + li {
-    margin-top: .5em;
-    margin-left : 0;
-}
-
-
 .woodparts-nav > li > a,
 .woodparts-nav > li > a:hover,
 .woodparts-nav > li > a:visited {
@@ -46,5 +34,5 @@ main {
 .woodparts-nav > li.active > a:hover {
     background-color: #fff;
     color: #000080;
-    border-top: 1px solid #c0c0c0;
+    border-top: 1px solid #000080;
 }

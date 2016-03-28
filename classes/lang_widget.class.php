@@ -37,10 +37,7 @@ class LangWidget implements IWidget {
         
         return "
         <div class='lang-widget'>
-            <ul class='hidden-xs hidden-sm nav nav-pills nav-stacked'>
-                {$links_html}
-            </ul>
-            <ul class='hidden-md hidden-lg nav nav-pills'>
+            <ul class='nav nav-pills nav-stacked'>
                 {$links_html}
             </ul>
         </div>";

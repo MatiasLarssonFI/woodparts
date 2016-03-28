@@ -16,3 +16,9 @@ main {
 .woodparts-nav > li > a {
     border-radius: 0px;
 }
+
+
+.lang-widget .nav.nav-stacked > li + li {
+    margin-top: .5em;
+    margin-left : 0;
+}
