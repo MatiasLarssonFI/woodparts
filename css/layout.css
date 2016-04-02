@@ -18,7 +18,12 @@ main {
 }
 
 
-.lang-widget .nav.nav-stacked > li + li {
-    margin-top: .5em;
-    margin-left : 0;
+.lang > li + li {
+    margin-left: .5em;
+}
+
+
+.lang.downsize > li > a {
+    padding-bottom: .2em;
+    padding-top: .2em;
 }

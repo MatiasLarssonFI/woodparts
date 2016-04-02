@@ -5,8 +5,8 @@ namespace Views;
 require_once(dirname(__FILE__) . "/front_page_view.class.php");
 require_once(dirname(__FILE__) . "/gallery_view.class.php");
 require_once(dirname(__FILE__) . "/service_view.class.php");
+require_once(dirname(__FILE__) . "/contact_view.class.php");
 
-require_once(dirname(__FILE__) . "/../lang_widget.class.php");
 require_once(dirname(__FILE__) . "/../nav_widget.class.php");
 require_once(dirname(__FILE__) . "/../site_config_factory.class.php");
 
@@ -41,7 +41,6 @@ class ViewFactory {
      */
     public function get_view($action, array $params, $language) {
         $widgets = array(
-            "lang" => new \LangWidget($action, $params, $language),
             "nav" => new \NavWidget($action, $this->get_actions())
         );
         
@@ -51,6 +50,8 @@ class ViewFactory {
             return new GalleryView(array(), $widgets);
         } else if ($action === "services") {
             return new ServiceView(array(), $widgets);
+        } else if ($action === "contact") {
+            return new ContactView(array(), $widgets);
         }
         
         // Bad request: redirect to front page

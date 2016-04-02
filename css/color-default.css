@@ -9,14 +9,14 @@ main {
 }
 
 
-.lang-widget a {
+.lang a {
     border: 1px solid #dfdfdf;
     color: #000080;
     background-color: #eee;
 }
 
 
-.lang-widget li > a:hover {
+.lang li > a:hover {
     border-color: #000080;
 }
 

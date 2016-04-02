@@ -22,7 +22,7 @@ abstract class AbstractView implements IView {
      * Constructor.
      * 
      * @param mixed[] $params An associative array of the view parameters, [ "param_name" => "param value", ... ]
-     * @param IWidget[] $widgets [ "lang" => lang_widget ]
+     * @param IWidget[] $widgets [ "nav" => NavWidget, ... ]
      */
     public function __construct(array $params, array $widgets) {
         $this->validate_params($params);

@@ -41,11 +41,38 @@ class NavWidget implements IWidget {
         
         
         return "
-            <ul class='hidden-xs hidden-sm nav nav-pills woodparts-nav'>
-                {$nav_links}
-            </ul>
-            <ul class='hidden-md hidden-lg nav nav-pills nav-stacked woodparts-nav'>
-                {$nav_links}
+            <div class='hidden-xs hidden-sm row'>
+                <div class='col-md-10'>
+                    <ul class='nav nav-pills woodparts-nav'>
+                        {$nav_links}
+                    </ul>
+                </div>
+                <div class='col-md-2'>
+                    {$this->get_lang_html($lang, $base_uri, "downsize")}
+                </div>
+            </div>
+            <div class='hidden-md hidden-lg'>
+                <ul class='nav nav-pills nav-stacked woodparts-nav'>
+                    {$nav_links}
+                </ul>
+                <hr>
+                {$this->get_lang_html($lang, $base_uri)}
+            </div>";
+    }
+    
+    
+    private function get_lang_html($lang, $base_uri, $css_class = "") {
+        $action = $this->_action;
+        $language = $lang;
+        $links_html = implode("", array_map(function($lang) use ($base_uri, $action) {
+            return "<li><a href='{$base_uri}/{$lang}/{$action}'><strong>" . strtoupper($lang) . "</strong></a></li>";
+        }, array_filter(DBIF::get()->get_language_codes(), function($code) use ($language) {
+            return $code !== $language;
+        })));
+        
+        return "
+            <ul class='lang {$css_class} nav nav-pills'>
+                {$links_html}
             </ul>";
     }
 }
