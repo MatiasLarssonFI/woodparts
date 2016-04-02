@@ -18,8 +18,13 @@ main {
 }
 
 
-.lang > li + li {
+.lang.downsize > li + li {
     margin-left: .5em;
+}
+
+
+.lang.nav-stacked > li + li {
+    margin-top: .5em;
 }
 
 

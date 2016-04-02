@@ -56,7 +56,7 @@ class NavWidget implements IWidget {
                     {$nav_links}
                 </ul>
                 <hr>
-                {$this->get_lang_html($lang, $base_uri)}
+                {$this->get_lang_html($lang, $base_uri, "nav-stacked")}
             </div>";
     }
     
@@ -71,7 +71,7 @@ class NavWidget implements IWidget {
         })));
         
         return "
-            <ul class='lang {$css_class} nav nav-pills'>
+            <ul class='lang nav nav-pills {$css_class}'>
                 {$links_html}
             </ul>";
     }
