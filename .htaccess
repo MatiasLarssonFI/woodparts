@@ -8,7 +8,7 @@
 # where "action" is the action and "param1" and "param2" are parameters
 # to "action".
 #
-# The action length always exceeds two characters and. The action and
+# The action length always exceeds two characters. The action and
 # language may only contain characters in the range of A-z.
 #
 # Finally, all of these parts (language, action and parameters) are
