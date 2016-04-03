@@ -21,8 +21,14 @@ class ContactView extends AbstractView {
         $text_storage = \UITextStorage::get();
         return array(
             "strings" => array(
-                "page_title" => $text_storage->text("CONTACT_TITLE")
-            )
+                "page_title" => $text_storage->text("CONTACT_TITLE"),
+                "field_name" => $text_storage->text("CONTACT_FIELD_NAME"),
+                "field_email" => $text_storage->text("CONTACT_FIELD_EMAIL"),
+                "field_subject" => $text_storage->text("CONTACT_FIELD_SUBJECT"),
+                "field_message" => $text_storage->text("CONTACT_FIELD_MESSAGE"),
+                "submit" => $text_storage->text("CONTACT_SUBMIT")
+            ),
+            "lang" => $text_storage->get_language()
         );
     }
 }

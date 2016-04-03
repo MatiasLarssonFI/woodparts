@@ -36,3 +36,13 @@ main {
     color: #000080;
     border-top: 1px solid #000080;
 }
+
+
+.btn-primary {
+    background-color: #000080;
+    border-color: #000;
+}
+
+.btn-primary:hover {
+    background-color: #000080;
+}
