@@ -21,12 +21,17 @@ class ProductionSiteConfig implements ISiteConfig {
     
     
     public function db_login_params() {
-        $jso = json_decode(file_get_contents(dirname(__FILE__) . "/../../../db_creds.json"));
-        return array(
-            "host" => $jso->host,
-            "dbname" => $jso->dbname,
-            "user" => $jso->user,
-            "pass" => $jso->pass
-        );
+        $creds_fname = dirname(__FILE__) . "/../../../db_creds.json";
+        if (is_readable($creds_fname)) {
+            $jso = json_decode(file_get_contents($creds_fname));
+            return array(
+                "host" => $jso->host,
+                "dbname" => $jso->dbname,
+                "user" => $jso->user,
+                "pass" => $jso->pass
+            );
+        }
+        
+        throw new RuntimeException("Cannot read db credentials");
     }
 }
