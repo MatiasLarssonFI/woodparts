@@ -1,6 +1,7 @@
 <?php
 
 require_once(dirname(__FILE__) . "/gallery_image.class.php");
+require_once(dirname(__FILE__) . "/ui_text_storage.class.php");
 require_once(dirname(__FILE__) . "/dbif.class.php");
 
 
@@ -29,13 +30,19 @@ class GalleryImageFactory {
      */
     public function get_gallery_images() {
         $ret = array();
-        DBIF::get()->get_gallery_images(function(array $row) use (&$ret) {
+        
+        $lang = UITextStorage::get()->get_language();
+        
+        DBIF::get()->get_gallery_images(function(array $row) use (&$ret, $lang) {
+            $name_obj = json_decode($row["name"]);
+            $descr_obj = json_decode($row["description"]);
+            
             $ret[] = new GalleryImage(
                 $row["id"],
                 $row["original_url"],
                 $row["thumb_url"],
-                $row["name"],
-                $row["description"]
+                $name_obj->$lang,
+                $descr_obj->$lang
             );
         });
         
@@ -50,12 +57,17 @@ class GalleryImageFactory {
      */
     public function get_img_bar_images() {
         $ret = array();
-        DBIF::get()->get_img_bar_images(function(array $row) use (&$ret) {
+        
+        $lang = UITextStorage::get()->get_language();
+        
+        DBIF::get()->get_img_bar_images(function(array $row) use (&$ret, $lang) {
+            $name_obj = json_decode($row["name"]);
+            
             $ret[] = new GalleryImage(
                 $row["id"],
                 "",
                 $row["thumb_url"],
-                $row["name"],
+                $name_obj->$lang,
                 ""
             );
         });
