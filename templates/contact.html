@@ -6,6 +6,7 @@
     <div class="row">
         <div class="col-md-5 col-md-offset-3">
             <form method="post" action="{{ __base_uri }}/{{ lang }}/contact_submit" class="form-horizontal">
+                <input type="hidden" id="name" name="__csrf_token" value="{{ __csrf_token }}">
                 <div class="form-group">
                     <label for="name" class="col-sm-4">{{ strings.field_name }}</label>
                     <div class="col-sm-8">
