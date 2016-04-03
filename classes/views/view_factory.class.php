@@ -6,6 +6,7 @@ require_once(dirname(__FILE__) . "/front_page_view.class.php");
 require_once(dirname(__FILE__) . "/gallery_view.class.php");
 require_once(dirname(__FILE__) . "/service_view.class.php");
 require_once(dirname(__FILE__) . "/contact_view.class.php");
+require_once(dirname(__FILE__) . "/contact_submit_view.class.php");
 
 require_once(dirname(__FILE__) . "/../nav_widget.class.php");
 require_once(dirname(__FILE__) . "/../site_config_factory.class.php");
@@ -41,7 +42,7 @@ class ViewFactory {
      */
     public function get_view($action, array $params, $language) {
         $widgets = array(
-            "nav" => new \NavWidget($action, $this->get_actions())
+            "nav" => new \NavWidget($action, $this->get_nav_actions())
         );
         
         if ($action === "") {
@@ -52,6 +53,8 @@ class ViewFactory {
             return new ServiceView(array(), $widgets);
         } else if ($action === "contact") {
             return new ContactView(array(), $widgets);
+        } else if ($action === "contact_submit") {
+            return new ContactSubmitView(array(), $widgets);
         }
         
         // Bad request: redirect to front page
@@ -63,7 +66,7 @@ class ViewFactory {
     }
     
     
-    private function get_actions() {
+    private function get_nav_actions() {
         return array("", "services", "gallery", "contact");
     }
     

@@ -4,8 +4,11 @@
 {% block content %}
 <main>
     <div class="row">
-        <div class="col-md-5 col-md-offset-3">
-            <form method="post" action="{{ __base_uri }}/{{ lang }}/contact_submit" class="form-horizontal">
+        <div class="col-md-5 col-md-offset-3" id="page-content">
+            <div id="feedback">
+                &nbsp;
+            </div>
+            <form method="post" action="{{ __base_uri }}/{{ lang }}/contact_submit" class="form-horizontal" id="contact-form">
                 <input type="hidden" id="name" name="__csrf_token" value="{{ __csrf_token }}">
                 <div class="form-group">
                     <label for="name" class="col-sm-4">{{ strings.field_name }}</label>
@@ -34,10 +37,19 @@
                 <div class="form-group">
                     <div class="col-xs-12">
                         <button type="submit" class="btn btn-primary">{{ strings.submit }}</button>
+                        <img id="ajax-spinner" src="{{ __base_uri }}/data/img/ajax-spinner.gif">
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </main>
+<script src="{{ __base_uri }}/js/contact.js"></script>
+<script>
+    !function($) {
+        $(document).ready(function() {
+            wp.contact.init();
+        });
+    }(jQuery);
+</script>
 {% endblock %}
