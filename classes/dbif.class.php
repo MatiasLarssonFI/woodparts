@@ -105,6 +105,11 @@ class DBIF {
     }
     
     
+    /**
+     * Returns URI of the CSS file of colors.
+     * 
+     * @return string
+     */
     public function get_color_css_uri() {
         $stm = $this->_pdo->prepare("SELECT `value` from config where `key` = 'color_css_uri'");
         $stm->execute();
@@ -112,6 +117,11 @@ class DBIF {
     }
     
     
+    /**
+     * Returns URI of the footer image.
+     * 
+     * @return string
+     */
     public function get_footer_img_uri() {
         $stm = $this->_pdo->prepare("SELECT `value` from config where `key` = 'footer_img_uri'");
         $stm->execute();
@@ -119,6 +129,11 @@ class DBIF {
     }
     
     
+    /**
+     * Returns URI of the header image.
+     * 
+     * @return string
+     */
     public function get_header_img_uri() {
         $stm = $this->_pdo->prepare("SELECT `value` from config where `key` = 'header_img_uri'");
         $stm->execute();

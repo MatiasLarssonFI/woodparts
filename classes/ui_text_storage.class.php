@@ -29,7 +29,9 @@ class UITextStorage {
     
     
     /**
-     * Try to change the language and fail quietly, falling back to the default language.
+     * Try to change the language and fail quietly.
+     * 
+     * Failing results in falling back to the default language.
      * 
      * @param string $language ISO-3166, 2 chars
      */
@@ -44,7 +46,7 @@ class UITextStorage {
     
     
     /**
-     * Get the UI text in current language.
+     * Returns the UI text in current language.
      * 
      * @param string $code The UI text code
      */
@@ -57,6 +59,11 @@ class UITextStorage {
     }
     
     
+    /**
+     * Returns the current language ISO 3166-1 alpha-2 code.
+     * 
+     * @return string
+     */
     public function get_language() {
         return $this->_current_language;
     }
