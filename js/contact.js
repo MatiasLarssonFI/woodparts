@@ -5,13 +5,15 @@
                 e.preventDefault();
                 
                 var form = $(this);
+                var submit_btn = form.find("button[type='submit']");
+                var spinner = form.find("#ajax-spinner");
                 $.ajax({
                     type: "post",
                     url : form.attr("action"),
                     data : form.serialize(),
                     beforeSend : function() {
-                        form.find("button[type='submit']").prop("disabled", true);
-                        form.find("#ajax-spinner").animate({opacity : 1});
+                        submit_btn.prop("disabled", true);
+                        spinner.animate({opacity : 1});
                     },
                     success : function(html) {
                         form.slideUp(600, function() {
@@ -20,10 +22,10 @@
                     },
                     error : function() {
                         alert("We're sorry, but an error has occured. Please try again later.");
-                        form.find("button[type='submit']").prop("disabled", false);
+                        submit_btn.prop("disabled", false);
                     },
                     complete : function() {
-                        form.find("#ajax-spinner").animate({opacity : 0});
+                        spinner.animate({opacity : 0});
                     }
                 });
             });
