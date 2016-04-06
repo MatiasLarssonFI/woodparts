@@ -8,7 +8,6 @@ require_once(dirname(__FILE__) . "/service_view.class.php");
 require_once(dirname(__FILE__) . "/contact_view.class.php");
 require_once(dirname(__FILE__) . "/contact_submit_view.class.php");
 
-require_once(dirname(__FILE__) . "/../nav_widget.class.php");
 require_once(dirname(__FILE__) . "/../site_config_factory.class.php");
 
 
@@ -38,13 +37,10 @@ class ViewFactory {
      * @param string $action The action name
      * @param string[] $params The action parameters
      * @param string $language Current language
+     * @param IWidget[] $widgets [ "nav" => IWidget, ... ]
      * @return IView
      */
-    public function get_view($action, array $params, $language) {
-        $widgets = array(
-            "nav" => new \NavWidget($action, $this->get_nav_actions())
-        );
-        
+    public function get_view($action, array $params, $language, array $widgets) {
         if ($action === "") {
             return new FrontPageView(array(), $widgets);
         } else if ($action === "gallery") {
@@ -54,7 +50,7 @@ class ViewFactory {
         } else if ($action === "contact") {
             return new ContactView(array(), $widgets);
         } else if ($action === "contact_submit") {
-            return new ContactSubmitView(array(), $widgets);
+            return new ContactSubmitView($_POST, $widgets);
         }
         
         // Bad request: redirect to front page
@@ -66,12 +62,5 @@ class ViewFactory {
     }
     
     
-    private function get_nav_actions() {
-        return array("", "services", "gallery", "contact");
-    }
-    
-    
-    protected function __construct() {
-        
-    }
+    protected function __construct() {}
 }

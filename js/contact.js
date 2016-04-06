@@ -7,6 +7,8 @@
                 var form = $(this);
                 var submit_btn = form.find("button[type='submit']");
                 var spinner = form.find("#ajax-spinner");
+                
+                form.find("#is_ajax").val(1);
                 $.ajax({
                     type: "post",
                     url : form.attr("action"),

@@ -8,7 +8,7 @@ require_once(dirname(__FILE__) . "/../ui_text_storage.class.php");
 
 class ContactSubmitView extends AbstractView {
     protected function get_required_params() {
-        return array();
+        return array("__csrf_token", "name", "email", "subject", "message", "is_ajax");
     }
     
     
@@ -22,7 +22,8 @@ class ContactSubmitView extends AbstractView {
         return array(
             "strings" => array(
                 "text" => $text_storage->text("CONTACT_SUBMIT_TEXT")
-            )
+            ),
+            "is_ajax" => (bool)$params["is_ajax"]
         );
     }
 }

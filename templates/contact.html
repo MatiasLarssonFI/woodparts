@@ -9,7 +9,8 @@
                 &nbsp;
             </div>
             <form method="post" action="{{ __base_uri }}/{{ lang }}/contact_submit" class="form-horizontal" id="contact-form">
-                <input type="hidden" id="name" name="__csrf_token" value="{{ __csrf_token }}">
+                <input type="hidden" name="__csrf_token" value="{{ __csrf_token }}">
+                <input type="hidden" id="is_ajax" name="is_ajax" value="0">
                 <div class="form-group">
                     <label for="name" class="col-sm-4">{{ strings.field_name }}</label>
                     <div class="col-sm-8">
@@ -37,7 +38,7 @@
                 <div class="form-group">
                     <div class="col-xs-12">
                         <button type="submit" class="btn btn-primary">{{ strings.submit }}</button>
-                        <img id="ajax-spinner" src="{{ __base_uri }}/data/img/ajax-spinner.gif">
+                        <img id="ajax-spinner" src="{{ __base_uri }}/data/img/ajax-spinner.gif" alt="">
                     </div>
                 </div>
             </form>

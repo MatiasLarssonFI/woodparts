@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends is_ajax ? "base_ajax.html" : "base.html" %}
 {% block title %}{{ strings.page_title }}{% endblock %}
 
 {% block content %}

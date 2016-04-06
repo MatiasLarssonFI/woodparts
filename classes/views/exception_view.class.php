@@ -7,7 +7,7 @@ require_once(dirname(__FILE__) . "/abstract_view.class.php");
 
 class ExceptionView extends AbstractView {
     protected function get_required_params() {
-        return array("exception");
+        return array("exception", "is_ajax");
     }
     
     
@@ -21,7 +21,8 @@ class ExceptionView extends AbstractView {
             "strings" => array(
                 "page_title" => "Error",
                 "description" => base64_encode($params["exception"]->getMessage())
-            )
+            ),
+            "is_ajax" => (bool)$params["is_ajax"]
         );
     }
 }
