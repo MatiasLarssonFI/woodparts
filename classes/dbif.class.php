@@ -141,6 +141,16 @@ class DBIF {
     }
     
     
+    public function insert_contact_message($name, $email, $subject, $message) {
+        $stm = $this->_pdo->prepare("INSERT INTO `contact_inbox` (name, email, subject, message, time_created) VALUES(:name, :email, :subject, :message, now())");
+        $stm->bindParam(":name", $name, PDO::PARAM_STR);
+        $stm->bindParam(":email", $email, PDO::PARAM_STR);
+        $stm->bindParam(":subject", $subject, PDO::PARAM_STR);
+        $stm->bindParam(":message", $message, PDO::PARAM_STR);
+        $stm->execute();
+    }
+    
+    
     protected function __construct() {
         $db_login = SiteConfigFactory::get()->get_site_config()->db_login_params();
         try {
