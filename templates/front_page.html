@@ -14,7 +14,7 @@
             <div class="row">
                 {% for image in bar_imgs %}
                     <div class="col-xs-5 col-sm-4">
-                        <a href="{{ __base_uri }}/gallery/#{{ image.get_id }}" title="{{ image.get_name }}">
+                        <a href="{{ __base_uri }}/{{ lang }}/gallery/#{{ image.get_id }}" title="{{ image.get_name }}">
                             <img class="img-bar-img img-responsive" src="{{ __base_uri }}{{ image.get_thumb_url }}" alt="{{ image.get_name }}">
                         </a>
                     </div>

@@ -23,7 +23,8 @@ class ServiceView extends AbstractView {
             "strings" => array(
                 "page_title" => $text_storage->text("SERVICES_TITLE")
             ),
-            "services" => \ServiceFactory::get()->get_services()
+            "services" => \ServiceFactory::get()->get_services(),
+            "lang" => $text_storage->get_language()
         );
     }
 }
