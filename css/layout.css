@@ -37,3 +37,8 @@ main {
 #ajax-spinner {
     opacity : 0;
 }
+
+
+.contact-url {
+    display: none;
+}
