@@ -36,7 +36,7 @@ class UITextStorage {
      * @param string $language ISO-3166, 2 chars
      */
     public function try_change_language($language) {
-        if (in_array($language, array("fi", "se", "en")) &&
+        if (in_array($language, DBIF::get()->get_language_codes()) &&
             $this->_current_language !== $language) {
             
             $this->load_texts($language);
