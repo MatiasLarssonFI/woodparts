@@ -28,6 +28,12 @@ class ContactView extends AbstractView {
                 "field_message" => $text_storage->text("CONTACT_FIELD_MESSAGE"),
                 "submit" => $text_storage->text("CONTACT_SUBMIT")
             ),
+            "prefill" => array(
+                "name" => "",
+                "email" => "",
+                "subject" => "",
+                "message" => "",
+            ),
             "lang" => $text_storage->get_language()
         );
     }

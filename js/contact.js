@@ -1,7 +1,7 @@
 !function($) {
     wp.contact = {
         init : function() {
-            $("#contact-form").submit(function(e) {
+            $("#contact-form").unbind("submit").submit(function(e) {
                 e.preventDefault();
                 
                 var form = $(this);

@@ -1,5 +1,5 @@
 {% extends is_ajax ? "base_ajax.html" : "base.html" %}
 {% block title %}{{ strings.page_title }}{% endblock %}
 {% block content %}
-    <p><span aria-hidden="true" class="glyphicon glyphicon-ok"></span> {{ strings.text }}</p>
+    {% include is_success ? "contact_submit_success.html" : "contact_form.html" %}
 {% endblock %}
