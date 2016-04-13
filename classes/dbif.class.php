@@ -1,5 +1,7 @@
 <?php
 
+require_once(dirname(__FILE__) . "/icontact_message.class.php");
+
 
 /**
  * Singleton.
@@ -141,12 +143,66 @@ class DBIF {
     }
     
     
-    public function insert_contact_message($name, $email, $subject, $message) {
+    /**
+     * Returns the contact form email recipient.
+     * 
+     * @return string
+     */
+    public function get_contact_email() {
+        $stm = $this->_pdo->prepare("SELECT `value` from config where `key` = 'contact_email'");
+        $stm->execute();
+        return $stm->fetchColumn();
+    }
+    
+    
+    /**
+     * Returns the mail server URI.
+     * 
+     * @return string
+     */
+    public function get_mail_server() {
+        $stm = $this->_pdo->prepare("SELECT `value` from config where `key` = 'mail_server'");
+        $stm->execute();
+        return $stm->fetchColumn();
+    }
+    
+    
+    /**
+     * Returns the mail server username.
+     * 
+     * @return string
+     */
+    public function get_mail_user() {
+        $stm = $this->_pdo->prepare("SELECT `value` from config where `key` = 'mail_user'");
+        $stm->execute();
+        return $stm->fetchColumn();
+    }
+    
+    
+    /**
+     * Returns the mail server password.
+     * 
+     * @return string
+     */
+    public function get_mail_password() {
+        $stm = $this->_pdo->prepare("SELECT `value` from config where `key` = 'mail_password'");
+        $stm->execute();
+        return $stm->fetchColumn();
+    }
+    
+    
+    public function insert_contact_message(IContactMessage $message) {
         $stm = $this->_pdo->prepare("INSERT INTO `contact_inbox` (name, email, subject, message, time_created) VALUES(:name, :email, :subject, :message, now())");
+        
+        $name = $message->get_name();
+        $email = $message->get_email();
+        $subject = $message->get_subject();
+        $msg = $message->get_message();
+        
         $stm->bindParam(":name", $name, PDO::PARAM_STR);
         $stm->bindParam(":email", $email, PDO::PARAM_STR);
         $stm->bindParam(":subject", $subject, PDO::PARAM_STR);
-        $stm->bindParam(":message", $message, PDO::PARAM_STR);
+        $stm->bindParam(":message", $msg, PDO::PARAM_STR);
         $stm->execute();
     }
     

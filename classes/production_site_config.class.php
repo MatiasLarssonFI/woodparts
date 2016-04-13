@@ -5,13 +5,18 @@ require_once(dirname(__FILE__) . "/isite_config.class.php");
 
 class ProductionSiteConfig implements ISiteConfig {
     public function base_uri() {
+        return "http://{$this->host()}";
+    }
+    
+    
+    public function host() {
         if (strpos($_SERVER["HTTP_HOST"], "martinlarsson.fi") !== false) {
             // if the request header "Host" is "martinlarsson.fi",
             // then use that
-            return "http://martinlarsson.fi";
+            return "martinlarsson.fi";
         }
         
-        return "http://woodparts.fi";
+        return "woodparts.fi";
     }
     
     

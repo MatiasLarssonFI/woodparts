@@ -8,6 +8,12 @@ class DevelopmentSiteConfig implements ISiteConfig {
         return "http://localhost";
     }
     
+    
+    public function host() {
+        return "localhost";
+    }
+    
+    
     public function default_language() {
         return "fi";
     }

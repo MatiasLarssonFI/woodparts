@@ -4,6 +4,7 @@ namespace Views;
 
 require_once(dirname(__FILE__) . "/abstract_view.class.php");
 require_once(dirname(__FILE__) . "/../ui_text_storage.class.php");
+require_once(dirname(__FILE__) . "/../contact_message_factory.class.php");
 require_once(dirname(__FILE__) . "/../dbif.class.php");
 
 
@@ -25,7 +26,11 @@ class ContactSubmitView extends AbstractView {
         if (strlen($params["url"]) === 0) { // url is actually a hidden captcha field, not to be filled
             $errors = $this->get_form_errors($params, $text_storage);
             if (empty($errors)) {
-                \DBIF::get()->insert_contact_message($params["name"], $params["email"], $params["subject"], $params["message"]);
+                $f = \ContactMessageFactory::get();
+                $message = $f->make_from_values($params["name"], $params["email"], $params["subject"], $params["message"]);
+                $mailer = $f->get_mailer();
+                \DBIF::get()->insert_contact_message($message);
+                $mailer->send($message);
                 $is_success = true;
             }
         }
