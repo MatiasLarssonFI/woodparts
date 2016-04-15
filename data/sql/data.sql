@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 12, 2016 at 11:21 PM
+-- Generation Time: Apr 15, 2016 at 11:43 PM
 -- Server version: 5.5.47-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.14
 
@@ -28,7 +28,10 @@ INSERT INTO `config` (`id`, `key`, `value`, `time_edited`, `time_created`) VALUE
 (1, 'color_css_uri', '/css/color-default.css', NULL, '2016-03-13 22:00:00'),
 (2, 'footer_img_uri', '/data/img/footer-grey-blue.png', '2016-03-17 20:18:00', '2016-03-16 22:00:00'),
 (3, 'header_img_uri', '/data/img/header.png', '2016-03-26 17:34:29', '2016-03-25 22:00:00'),
-(4, 'contact_email', 'matias@matias-laptop', '2016-04-02 18:37:11', '2016-04-01 21:00:00');
+(4, 'contact_email', 'matias@matias-laptop', '2016-04-02 18:37:11', '2016-04-01 21:00:00'),
+(5, 'mail_server', 'localhost', '2016-04-13 19:20:29', '2016-04-12 21:00:00'),
+(6, 'mail_user', '', NULL, '2016-04-12 21:00:00'),
+(7, 'mail_password', '', NULL, '2016-04-12 21:00:00');
 
 --
 -- Dumping data for table `gallery_image`
@@ -140,7 +143,7 @@ INSERT INTO `ui_text` (`id`, `language`, `code`, `content`, `time_edited`, `time
 (44, 'se', 'CONTACT_SUBMIT', 'Skicka meddelande', NULL, '2016-04-02 21:00:00'),
 (45, 'en', 'CONTACT_SUBMIT', 'Send message', NULL, '2016-04-02 21:00:00'),
 (46, 'fi', 'CONTACT_SUBMIT_TEXT', 'Kiitos yhteydenotostasi. Olemme sinuun yhteydessä pian.', NULL, '2016-04-02 21:00:00'),
-(47, 'se', 'CONTACT_SUBMIT_TEXT', 'Tack. Vi kommer att vara i kontakt med dig snart.', NULL, '2016-04-02 21:00:00'),
+(47, 'se', 'CONTACT_SUBMIT_TEXT', 'Tack. Vi kommer att vara i kontakt med dig snart.', '2016-04-13 17:40:42', '2016-04-02 21:00:00'),
 (48, 'en', 'CONTACT_SUBMIT_TEXT', 'Thank you. We''ll be in touch with you soon.', '2016-04-03 16:28:03', '2016-04-02 21:00:00'),
 (49, 'fi', 'CONTACT_FIELD_ERROR_NAME', 'Nimi ei voi olla tyhjä.', NULL, '2016-04-02 18:00:00'),
 (50, 'fi', 'CONTACT_FIELD_ERROR_EMAIL', 'Sähköpostiosoite on oltava oikea.', NULL, '2016-04-02 18:00:00'),
@@ -153,7 +156,10 @@ INSERT INTO `ui_text` (`id`, `language`, `code`, `content`, `time_edited`, `time
 (57, 'se', 'CONTACT_FIELD_ERROR_NAME', 'Ditt namn kan inte vara tom.', NULL, '2016-04-02 15:00:00'),
 (58, 'se', 'CONTACT_FIELD_ERROR_EMAIL', 'Din e-postadresss måste vara en riktig e-postaddress.', NULL, '2016-04-02 15:00:00'),
 (59, 'se', 'CONTACT_FIELD_ERROR_SUBJECT', 'Ämnet kan inte vara tom', NULL, '2016-04-02 15:00:00'),
-(60, 'se', 'CONTACT_FIELD_ERROR_MESSAGE', 'Meddelandet måste vara längre än tre tecken.', NULL, '0000-00-00 00:00:00');
+(60, 'se', 'CONTACT_FIELD_ERROR_MESSAGE', 'Meddelandet måste vara längre än tre tecken.', NULL, '0000-00-00 00:00:00'),
+(61, 'fi', 'CONTACT_FIELD_ERROR___CSRF_TOKEN', 'Pahoittelumme, mutta lomake on vanhentunut. Ole hyvä ja yritä uudelleen.', '2016-04-15 19:59:42', '2016-04-13 21:00:00'),
+(62, 'en', 'CONTACT_FIELD_ERROR___CSRF_TOKEN', 'We''re sorry but the form has expired. Please try again.', '2016-04-15 19:58:48', '2016-04-13 21:00:00'),
+(63, 'se', 'CONTACT_FIELD_ERROR___CSRF_TOKEN', 'Vi ber om ursäkt men formen har löpt ut. Var god försök igen.', '2016-04-15 19:58:51', '2016-04-13 21:00:00');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
