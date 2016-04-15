@@ -6,4 +6,4 @@ Sähköposti: {{ message.get_email }}
 ----------------------------------
 Viesti:
 
-{{ message.get_message|nl2br }}
+{{ message.get_message }}
