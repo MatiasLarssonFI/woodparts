@@ -62,6 +62,7 @@ class Session {
     
     
     protected function __construct() {
+        session_start();
         $this->_session_storage = &$_SESSION;
         $this->_request_storage = array();
     }
