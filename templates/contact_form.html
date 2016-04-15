@@ -1,3 +1,7 @@
+{% if errors.__csrf_token is defined %}
+<div class="alert alert-danger">{{ errors.__csrf_token }}</div>
+{% endif %}
+
 <form method="post" action="{{ __base_uri }}/{{ lang }}/contact_submit" class="form-horizontal" id="contact-form">
     <input type="hidden" name="__csrf_token" value="{{ __csrf_token }}">
     <input type="hidden" id="is_ajax" name="is_ajax" value="0">

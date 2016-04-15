@@ -5,6 +5,7 @@ namespace Views;
 require_once(dirname(__FILE__) . "/abstract_view.class.php");
 require_once(dirname(__FILE__) . "/../ui_text_storage.class.php");
 require_once(dirname(__FILE__) . "/../contact_message_factory.class.php");
+require_once(dirname(__FILE__) . "/../session.class.php");
 require_once(dirname(__FILE__) . "/../dbif.class.php");
 
 
@@ -56,7 +57,11 @@ class ContactSubmitView extends AbstractView {
     
     private function get_form_errors(array $form, \UITextStorage $text_storage) {
         $errors = array();
+        $session = \Session::get();
         $validators = array(
+            "__csrf_token" => function($token) use ($session) {
+                return $session->validate_csrf_token($token);
+            },
             "name" => "strlen",
             "email" => function($email) {
                 $at_pos = strpos($email, "@");
