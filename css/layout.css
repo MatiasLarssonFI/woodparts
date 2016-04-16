@@ -1,0 +1,44 @@
+#header > img, #footer > img {
+    width: 100%;
+}
+
+
+main {
+    padding: 2em 0 0 1em;
+}
+
+
+.img-bar-img, .gallery-img {
+    margin-bottom: 1em;
+}
+
+
+.woodparts-nav > li > a {
+    border-radius: 0px;
+}
+
+
+.lang.downsize > li + li {
+    margin-left: .5em;
+}
+
+
+.lang.nav-stacked > li + li {
+    margin-top: .5em;
+}
+
+
+.lang.downsize > li > a {
+    padding-bottom: .2em;
+    padding-top: .2em;
+}
+
+
+#ajax-spinner {
+    opacity : 0;
+}
+
+
+.contact-url {
+    display: none;
+}
