@@ -31,9 +31,9 @@ class ContactMessageMailer implements IMailer {
         
         $mail->Port = 587;
 
+        $mail->addReplyTo($contactmsg->get_email(), $contactmsg->get_name());
         $mail->setFrom('contactform@{$host}', 'WOODparts Contact Form');
         $mail->addAddress($db->get_contact_email());     // Add a recipient
-        $mail->addReplyTo($contactmsg->get_email(), $contactmsg->get_name());
         $mail->isHTML(true);                                  // Set email format to HTML
     
         $mail->CharSet = 'UTF-8';
