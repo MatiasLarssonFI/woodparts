@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 15, 2016 at 11:42 PM
+-- Generation Time: Apr 20, 2016 at 07:28 PM
 -- Server version: 5.5.47-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.14
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `contact_inbox` (
 
 CREATE TABLE IF NOT EXISTS `gallery_image` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `name` text COLLATE utf8_swedish_ci NOT NULL,
   `description` text COLLATE utf8_swedish_ci NOT NULL,
   `thumb_url` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
   `original_url` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
