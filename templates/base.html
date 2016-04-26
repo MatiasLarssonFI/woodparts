@@ -14,6 +14,13 @@
             <link rel="stylesheet" href="{{ __color_css_uri }}">
             
             <title>{% block title %}{% endblock %} - WOODparts Finland</title>
+            
+            <script>
+                // all AJAX shall actually be asynchronous (duh)
+                $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+                    options.async = true;
+                });
+            </script>
         {% endblock %}
     </head>
     <body>
