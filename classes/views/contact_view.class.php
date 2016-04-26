@@ -33,6 +33,7 @@ class ContactView extends AbstractView {
                 "email" => "",
                 "subject" => "",
                 "message" => "",
+                "url" => "", // hidden captcha
             ),
             "lang" => $text_storage->get_language()
         );
