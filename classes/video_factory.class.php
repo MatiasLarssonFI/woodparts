@@ -63,6 +63,7 @@ class VideoFactory {
     /**
      * Returns one videos page video.
      * 
+     * @param int $id
      * @return IVideo
      */
     public function get_videos_page_video($id) {
