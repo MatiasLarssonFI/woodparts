@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}{{ strings.page_title }}{% endblock %}
+
+{% block content %}
+<main>
+    <div class="row">
+        <div class="xol-xs-12 col-md-6 well">
+            <div class="row">
+                <div class="xol-xs-12">
+                    <h3>{{ selected_video.get_name }}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="xol-xs-12">
+                    <video class="img-responsive" src="{{ __base_uri }}{{ selected_video.get_video_url }}" controls>
+                        
+                    </video>
+                </div>
+            </div>
+            <div class="row">
+                <div class="xol-xs-12">
+                    <p>{{ selected_video.get_description }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="xol-xs-12 col-md-6">
+        {% for video in videos %}
+            <div class="row">
+                <div class="col-xs-6 col-sm-4 col-lg-3">
+                    <a href="{{ __base_uri }}/{{ lang }}/videos/{{ video.get_id }}" title="{{ video.get_title }}">
+                        <img class="img-thumbnail" alt="" src="{{ __base_uri }}{{ video.get_thumb_url }}">
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-8 col-lg-9">
+                    <strong>{{ video.get_name }}</strong>
+                    <p>{{ video.get_description }}</p>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}
