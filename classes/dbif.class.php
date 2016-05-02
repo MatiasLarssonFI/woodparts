@@ -115,7 +115,7 @@ class DBIF {
      */
     public function get_videos_page_video($id) {
         $stm = $this->_pdo->prepare("SELECT thumb_url, video_url, name, description, id FROM videos_page_video where id = :id");
-        $stm->bind(":id", $id, PDO::PARAM_INT);
+        $stm->bindParam(":id", $id, PDO::PARAM_INT);
         $stm->execute();
         return $stm->fetch();
     }
