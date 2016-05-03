@@ -42,3 +42,21 @@ main {
 .contact-url {
     display: none;
 }
+
+
+.videos-list-container h4 {
+    padding: 0 0 .5em 0;
+    margin-bottom: 1em;
+    margin-top: 0;
+}
+
+
+.videos-list-container {
+    padding: 1em;
+}
+
+
+.video-container {
+    padding: 1em 1em 0 1em;
+    margin-bottom: 2em;
+}
