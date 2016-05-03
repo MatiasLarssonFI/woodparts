@@ -21,7 +21,8 @@ class VideosPageView extends AbstractView {
         $text_storage = \UITextStorage::get();
         return array(
             "strings" => array(
-                "page_title" => $text_storage->text("VIDEOS_PAGE_TITLE")
+                "page_title" => $text_storage->text("VIDEOS_PAGE_TITLE"),
+                "videos_list_caption" => $text_storage->text("VIDEOS_LIST_CAPTION"),
             ),
             "videos" => \VideoFactory::get()->get_videos_page_videos(),
             "selected_video" => \VideoFactory::get()->get_videos_page_video((int)$params["selected_video"]),
