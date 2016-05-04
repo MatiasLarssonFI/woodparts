@@ -9,6 +9,7 @@ class VideosPageVideo implements IVideo {
     private $_thumb_url;
     private $_name;
     private $_description;
+    private $_subtype;
     
     
     /**
@@ -19,13 +20,15 @@ class VideosPageVideo implements IVideo {
      * @param string $thumb_url
      * @param string $name
      * @param string $description
+     * @param string $subtype e. g. "mp4"
      */
-    public function __construct($id, $video_url, $thumb_url, $name, $description) {
+    public function __construct($id, $video_url, $thumb_url, $name, $description, $subtype) {
         $this->_id = $id;
         $this->_video_url = $video_url;
         $this->_thumb_url = $thumb_url;
         $this->_name = $name;
         $this->_description = $description;
+        $this->_subtype = $subtype;
     }
     
     
@@ -52,5 +55,9 @@ class VideosPageVideo implements IVideo {
     
     public function get_description() {
         return $this->_description;
+    }
+    
+    public function get_mime_subtype() {
+        return $this->_subtype;
     }
 }

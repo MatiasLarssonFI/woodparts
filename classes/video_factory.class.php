@@ -40,10 +40,11 @@ class VideoFactory {
             
             $ret[] = new VideosPageVideo(
                 $row["id"],
-                $row["video_url"],
+                "",
                 $row["thumb_url"],
                 $name_obj->$lang,
-                $descr_obj->$lang
+                $descr_obj->$lang,
+                ""
             );
         });
         
@@ -78,7 +79,8 @@ class VideoFactory {
             $row["video_url"],
             $row["thumb_url"],
             $name_obj->$lang,
-            $descr_obj->$lang
+            $descr_obj->$lang,
+            $row["mime_subtype"]
         );
     }
 }

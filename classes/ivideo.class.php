@@ -39,4 +39,12 @@ interface IVideo {
      * @return string
      */
     public function get_description();
+    
+    
+    /**
+     * Returns the media subtype (e. g. "mp4").
+     * 
+     * @return string
+     */
+    public function get_mime_subtype();
 }
