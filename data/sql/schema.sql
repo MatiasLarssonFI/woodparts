@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 03, 2016 at 10:30 PM
+-- Generation Time: May 04, 2016 at 06:26 PM
 -- Server version: 5.5.49-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.16
 
@@ -117,6 +117,7 @@ CREATE TABLE IF NOT EXISTS `videos_page_video` (
   `description` text COLLATE utf8_swedish_ci NOT NULL,
   `thumb_url` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
   `video_url` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `mime_subtype` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
   `is_published` tinyint(1) NOT NULL DEFAULT '1',
   `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `time_created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
