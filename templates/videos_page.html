@@ -4,11 +4,11 @@
 {% block content %}
 <main>
     <div class="row">
-        <div class="col-xs-12 col-md-6 video-container">
+        <div class="col-xs-12 col-md-7 video-container">
             <div class="row">
-                <div class="col-xs-12">
-                    <video class="img-responsive" src="{{ __base_uri }}{{ selected_video.get_video_url }}" controls>
-                        
+                <div class="embed-responsive embed-responsive-16by9">
+                    <video class="embed-responsive-item" controls>
+                        <source src="{{ __base_uri }}{{ selected_video.get_video_url }}" type="video/{{ selected_video.get_mime_subtype }}">
                     </video>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 col-md-5 col-md-offset-1 videos-list-container">
+        <div class="col-xs-12 col-md-4 col-md-offset-1 videos-list-container">
             <div class="row">
                 <div class="col-xs-12">
                     <h4>{{ strings.videos_list_caption }}</h4>
