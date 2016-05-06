@@ -5,11 +5,10 @@ require_once(dirname(__FILE__) . "/ivideo.class.php");
 
 class VideosPageVideo implements IVideo {
     private $_id;
-    private $_video_url;
     private $_thumb_url;
     private $_name;
     private $_description;
-    private $_subtype;
+    private $_video_files;
     
     
     /**
@@ -21,14 +20,14 @@ class VideosPageVideo implements IVideo {
      * @param string $name
      * @param string $description
      * @param string $subtype e. g. "mp4"
+     * @param VideoFile[] $video_files
      */
-    public function __construct($id, $video_url, $thumb_url, $name, $description, $subtype) {
+    public function __construct($id, $thumb_url, $name, $description, array $video_files) {
         $this->_id = $id;
-        $this->_video_url = $video_url;
         $this->_thumb_url = $thumb_url;
         $this->_name = $name;
         $this->_description = $description;
-        $this->_subtype = $subtype;
+        $this->_video_files = $video_files;
     }
     
     
@@ -38,8 +37,8 @@ class VideosPageVideo implements IVideo {
     }
     
     
-    public function get_video_url() {
-        return $this->_video_url;
+    public function get_video_files() {
+        return $this->_video_files;
     }
     
     

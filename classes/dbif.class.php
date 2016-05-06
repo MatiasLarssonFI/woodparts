@@ -97,7 +97,7 @@ class DBIF {
      * 
      * Calls cb_store_row on each row.
      */
-    public function get_videos_page_videos($cb_store_row) {
+    public function get_videos_page_videos_list($cb_store_row) {
         $stm = $this->_pdo->prepare("SELECT thumb_url, name, description, id FROM videos_page_video where is_published");
         $stm->execute();
         
@@ -110,14 +110,27 @@ class DBIF {
     /**
      * Get one videos page video.
      * 
+     * Calls cb_store_row on each row.
+     * 
      * @param int $id
-     * @return array The fields in an associative array
      */
-    public function get_videos_page_video($id) {
-        $stm = $this->_pdo->prepare("SELECT thumb_url, video_url, name, description, mime_subtype, id FROM videos_page_video where id = :id");
+    public function get_videos_page_video($id, $cb_store_row) {
+        $stm = $this->_pdo->prepare(
+                            "SELECT
+                                thumb_url,
+                                name,
+                                description,
+                                vf.video_url as video_url,
+                                vf.mime_subtype as mime_subtype,
+                                v.id
+                             FROM videos_page_video v
+                             inner join video_file vf on vf.videos_page_video_id = v.id
+                             where v.id = :id");
         $stm->bindParam(":id", $id, PDO::PARAM_INT);
         $stm->execute();
-        return $stm->fetch();
+        while ($row = $stm->fetch()) {
+            $cb_store_row($row);
+        }
     }
     
     

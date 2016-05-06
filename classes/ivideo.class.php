@@ -10,11 +10,11 @@ interface IVideo {
     
     
      /**
-     * Returns the video URL.
+     * Returns the video files.
      * 
-     * @return string
+     * @return VideoFile[]
      */
-    public function get_video_url();
+    public function get_video_files();
     
     
     /**
@@ -39,12 +39,4 @@ interface IVideo {
      * @return string
      */
     public function get_description();
-    
-    
-    /**
-     * Returns the media subtype (e. g. "mp4").
-     * 
-     * @return string
-     */
-    public function get_mime_subtype();
 }

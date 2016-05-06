@@ -2,6 +2,7 @@
 
 require_once(dirname(__FILE__) . "/ivideo.class.php");
 require_once(dirname(__FILE__) . "/videos_page_video.class.php");
+require_once(dirname(__FILE__) . "/video_file.class.php");
 require_once(dirname(__FILE__) . "/ui_text_storage.class.php");
 require_once(dirname(__FILE__) . "/dbif.class.php");
 
@@ -25,7 +26,7 @@ class VideoFactory {
     
     
     /**
-     * Returns the videos page videos.
+     * Returns the videos page videos for listing.
      * 
      * @return IVideo[]
      */
@@ -34,17 +35,16 @@ class VideoFactory {
         
         $lang = UITextStorage::get()->get_language();
         
-        DBIF::get()->get_videos_page_videos(function(array $row) use (&$ret, $lang) {
+        DBIF::get()->get_videos_page_videos_list(function(array $row) use (&$ret, $lang) {
             $name_obj = json_decode($row["name"]);
             $descr_obj = json_decode($row["description"]);
             
             $ret[] = new VideosPageVideo(
                 $row["id"],
-                "",
                 $row["thumb_url"],
                 $name_obj->$lang,
                 $descr_obj->$lang,
-                ""
+                array()
             );
         });
         
@@ -69,18 +69,36 @@ class VideoFactory {
      */
     public function get_videos_page_video($id) {
         $lang = UITextStorage::get()->get_language();
-        $row = DBIF::get()->get_videos_page_video($id);
+        $video_data = array();
+        $files_data = array();
         
-        $name_obj = json_decode($row["name"]);
-        $descr_obj = json_decode($row["description"]);
+        DBIF::get()->get_videos_page_video($id, function(array $row) use ($lang, &$video_data, &$files_data) {
+            if (empty($video_data)) {
+                $name_obj = json_decode($row["name"]);
+                $descr_obj = json_decode($row["description"]);
+                
+                $video_data = array(
+                    "id" => $row["id"],
+                    "thumb_url" => $row["thumb_url"],
+                    "name" => $name_obj->$lang,
+                    "description" => $descr_obj->$lang,
+                );
+            }
+            
+            $files_data[] = array(
+                "video_url" => $row["video_url"],
+                "mime_subtype" => $row["mime_subtype"],
+            );
+        });
         
         return new VideosPageVideo(
-            $row["id"],
-            $row["video_url"],
-            $row["thumb_url"],
-            $name_obj->$lang,
-            $descr_obj->$lang,
-            $row["mime_subtype"]
+            $video_data["id"],
+            $video_data["thumb_url"],
+            $video_data["name"],
+            $video_data["description"],
+            array_map(function(array $file_data) {
+                return new VideoFile($file_data["video_url"], $file_data["mime_subtype"]);
+            }, $files_data)
         );
     }
 }

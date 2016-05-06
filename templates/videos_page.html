@@ -8,7 +8,9 @@
             <div class="row">
                 <div class="embed-responsive embed-responsive-16by9">
                     <video class="embed-responsive-item" controls>
-                        <source src="{{ __base_uri }}{{ selected_video.get_video_url }}" type="video/{{ selected_video.get_mime_subtype }}">
+                        {% for file in selected_video.get_video_files %}
+                        <source src="{{ __base_uri }}{{ file.get_url }}" type="video/{{ file.get_mime_subtype }}">
+                        {% endfor %}
                     </video>
                 </div>
             </div>
