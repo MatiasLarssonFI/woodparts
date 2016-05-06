@@ -60,5 +60,5 @@ main {
 
 .video-container {
     background-color: #f6f6f6;
-    box-shadow: 0px 0px 5px #bbb;
+    box-shadow: 0px 0px 5px 2px #bbb;
 }
