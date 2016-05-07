@@ -55,8 +55,10 @@ class VideosPageVideo implements IVideo {
     public function get_url_name() {
         // spaces to dashes
         $name_str = str_replace(" ", "-", strtolower($this->_name));
+        // ä, ö and å to a, o and a
+        $name_str = str_replace(array("ä", "ö", "å"), array("a", "o", "a"), $name_str);
         // whitelist: a-z, 0-9, ä, ö and dash
-        return preg_replace("/[^a-z0-9äöå\-]/", "", $name_str);
+        return preg_replace("/[^a-z0-9\-]/", "", $name_str);
     }
     
     
