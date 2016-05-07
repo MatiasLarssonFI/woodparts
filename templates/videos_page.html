@@ -16,7 +16,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <h3>{{ selected_video.get_name }}</h3>
+                    <h2>{{ selected_video.get_name }}</h2>
                 </div>
             </div>
             <div class="row">
@@ -28,11 +28,11 @@
         <div class="col-xs-12 col-md-4 col-md-offset-1 videos-list-container">
             <div class="row">
                 <div class="col-xs-12">
-                    <h4>{{ strings.videos_list_caption }}</h4>
+                    <h3><small>{{ strings.videos_list_caption }}</small></h3>
                 </div>
             </div>
         {% for video in videos %}
-            <div class="row">
+            <div class="row row-video">
                 <div class="col-xs-8 col-sm-5">
                     <a href="{{ __base_uri }}/{{ lang }}/videos/{{ video.get_id }}/{{ video.get_url_name }}" title="{{ video.get_name }}">
                         <img class="img-thumbnail" alt="" src="{{ __base_uri }}{{ video.get_thumb_url }}">
@@ -43,7 +43,7 @@
                     <p>{{ video.get_description }}</p>
                 </div>
             </div>
-            {{  loop.last ? "" : "<hr>" }}
+            
         {% endfor %}
         </div>
     </div>
