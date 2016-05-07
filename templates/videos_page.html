@@ -34,16 +34,16 @@
         {% for video in videos %}
             <div class="row">
                 <div class="col-xs-8 col-sm-5">
-                    <a href="{{ __base_uri }}/{{ lang }}/videos/{{ video.get_id }}" title="{{ video.get_title }}">
+                    <a href="{{ __base_uri }}/{{ lang }}/videos/{{ video.get_id }}/{{ video.get_url_name }}" title="{{ video.get_name }}">
                         <img class="img-thumbnail" alt="" src="{{ __base_uri }}{{ video.get_thumb_url }}">
                     </a>
                 </div>
                 <div class="col-xs-12 col-sm-7">
-                    <a href="{{ __base_uri }}/{{ lang }}/videos/{{ video.get_id }}" title="{{ video.get_title }}"><strong>{{ video.get_name }}</strong></a>
+                    <a href="{{ __base_uri }}/{{ lang }}/videos/{{ video.get_id }}/{{ video.get_url_name }}" title="{{ video.get_name }}"><strong>{{ video.get_name }}</strong></a>
                     <p>{{ video.get_description }}</p>
                 </div>
             </div>
-            <hr>
+            {{  loop.last ? "" : "<hr>" }}
         {% endfor %}
         </div>
     </div>

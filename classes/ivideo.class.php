@@ -34,6 +34,14 @@ interface IVideo {
     
     
     /**
+     * Returns the URL-friendly video name.
+     * 
+     * @return string
+     */
+    public function get_url_name();
+    
+    
+    /**
      * Returns the video description.
      * 
      * @return string
