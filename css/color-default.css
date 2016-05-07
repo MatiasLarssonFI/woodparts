@@ -49,12 +49,18 @@ main {
 
 
 .videos-list-container h4 {
-    border-bottom: 1px solid #dedede;
+    border-bottom: 1px solid #ccc;
 }
 
 
 .videos-list-container {
-    background-color: #f0f0f0;
+    background-color: #fafafa;
+    border-left: 1px solid #ddd;
+}
+
+
+.videos-list-container hr {
+    border-color: #ccc;
 }
 
 
