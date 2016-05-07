@@ -48,14 +48,18 @@ main {
 }
 
 
-.videos-list-container h4 {
+.videos-list-container h3 {
     border-bottom: 1px solid #ccc;
 }
 
 
 .videos-list-container {
-    background-color: #fafafa;
     border-left: 1px solid #ddd;
+}
+
+
+.videos-list-container .row-video:hover {
+    background-color: #eee;
 }
 
 
