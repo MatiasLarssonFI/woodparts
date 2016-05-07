@@ -19,13 +19,15 @@ class VideosPageView extends AbstractView {
     
     protected function get_view_data(array $params) {
         $text_storage = \UITextStorage::get();
+        $selected_video = \VideoFactory::get()->get_videos_page_video((int)$params["selected_video"]);
+        $page_title = "{$selected_video->get_name()} - {$text_storage->text("VIDEOS_PAGE_TITLE")}";
         return array(
             "strings" => array(
-                "page_title" => $text_storage->text("VIDEOS_PAGE_TITLE"),
+                "page_title" => $page_title,
                 "videos_list_caption" => $text_storage->text("VIDEOS_LIST_CAPTION"),
             ),
             "videos" => \VideoFactory::get()->get_videos_page_videos(),
-            "selected_video" => \VideoFactory::get()->get_videos_page_video((int)$params["selected_video"]),
+            "selected_video" => $selected_video,
             "lang" => $text_storage->get_language()
         );
     }
