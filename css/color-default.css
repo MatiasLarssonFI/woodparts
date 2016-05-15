@@ -34,7 +34,7 @@ main {
 .woodparts-nav > li.active > a:hover {
     background-color: #fff;
     color: #000080;
-    border-top: 1px solid #000080;
+    border-bottom: 1px solid #000080;
 }
 
 
