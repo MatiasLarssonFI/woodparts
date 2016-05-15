@@ -1,5 +1,6 @@
 <?php
 
+require_once(dirname(__FILE__) . "/igallery_image.class.php");
 require_once(dirname(__FILE__) . "/gallery_image.class.php");
 require_once(dirname(__FILE__) . "/ui_text_storage.class.php");
 require_once(dirname(__FILE__) . "/dbif.class.php");
@@ -44,6 +45,15 @@ class GalleryImageFactory {
                 $name_obj->$lang,
                 $descr_obj->$lang
             );
+        });
+        
+        usort($ret, function(IGalleryImage $img1, IGalleryImage $img2) {
+            $name1 = $img1->get_name();
+            $name2 = $img2->get_name();
+            if ($name1 === $name2) {
+                return 0;
+            }
+            return ($name1 < $name2 ? -1 : 1);
         });
         
         return $ret;

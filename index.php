@@ -15,15 +15,16 @@ try {
                     ),
                 $_GET
             );
-    $request["params"] = explode("/", $request["params"]); // :<
+    $request["params"] = array_filter(explode("/", $request["params"]), "strlen"); // :<
     
     $widgets = array(
-        "nav" => new \NavWidget($request["action"], array("", "services", "gallery", "contact"))
+        "nav" => new \NavWidget($request["action"], array("", "services", "gallery", "videos", "contact"))
     );
     
     UITextStorage::get()->try_change_language($request["language"]);
     Views\ViewFactory::get()->get_view($request["action"], $request["params"], $request["language"], $widgets)->render();
 } catch (Exception $e) {
-    $view = new Views\ExceptionView(array("exception" => $e, "is_ajax" => $_REQUEST["is_ajax"]), $widgets);
+    $is_ajax = (isset($_REQUEST["is_ajax"]) ? $_REQUEST["is_ajax"] : false);
+    $view = new Views\ExceptionView(array("exception" => $e, "is_ajax" => $is_ajax), $widgets);
     $view->render();
 }

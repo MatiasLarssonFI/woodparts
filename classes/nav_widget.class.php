@@ -43,18 +43,22 @@ class NavWidget implements IWidget {
         return "
             <div class='hidden-xs hidden-sm row'>
                 <div class='col-md-10'>
-                    <ul class='nav nav-pills woodparts-nav'>
-                        {$nav_links}
-                    </ul>
+                    <nav>
+                        <ul class='nav nav-pills woodparts-nav'>
+                            {$nav_links}
+                        </ul>
+                    </nav>
                 </div>
                 <div class='col-md-2'>
                     {$this->get_lang_html($lang, $base_uri, "downsize")}
                 </div>
             </div>
             <div class='hidden-md hidden-lg'>
-                <ul class='nav nav-pills nav-stacked woodparts-nav'>
-                    {$nav_links}
-                </ul>
+                <nav>
+                    <ul class='nav nav-pills nav-stacked woodparts-nav'>
+                        {$nav_links}
+                    </ul>
+                </nav>
                 <hr>
                 {$this->get_lang_html($lang, $base_uri, "nav-stacked")}
             </div>";

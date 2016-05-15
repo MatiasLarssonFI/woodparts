@@ -93,6 +93,48 @@ class DBIF {
     
     
     /**
+     * Get the videos page videos.
+     * 
+     * Calls cb_store_row on each row.
+     */
+    public function get_videos_page_videos_list($cb_store_row) {
+        $stm = $this->_pdo->prepare("SELECT thumb_url, name, description, id FROM videos_page_video where is_published");
+        $stm->execute();
+        
+        while ($row = $stm->fetch()) {
+            $cb_store_row($row);
+        }
+    }
+    
+    
+    /**
+     * Get one videos page video.
+     * 
+     * Calls cb_store_row on each row.
+     * 
+     * @param int $id
+     */
+    public function get_videos_page_video($id, $cb_store_row) {
+        $stm = $this->_pdo->prepare(
+                            "SELECT
+                                thumb_url,
+                                name,
+                                description,
+                                vf.video_url as video_url,
+                                vf.mime_subtype as mime_subtype,
+                                v.id
+                             FROM videos_page_video v
+                             inner join video_file vf on vf.videos_page_video_id = v.id
+                             where v.id = :id");
+        $stm->bindParam(":id", $id, PDO::PARAM_INT);
+        $stm->execute();
+        while ($row = $stm->fetch()) {
+            $cb_store_row($row);
+        }
+    }
+    
+    
+    /**
      * Get the services.
      * 
      * Calls cb_store_row on each row.
