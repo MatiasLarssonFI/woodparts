@@ -7,6 +7,7 @@ require_once(dirname(__FILE__) . "/gallery_view.class.php");
 require_once(dirname(__FILE__) . "/service_view.class.php");
 require_once(dirname(__FILE__) . "/contact_view.class.php");
 require_once(dirname(__FILE__) . "/contact_submit_view.class.php");
+require_once(dirname(__FILE__) . "/videos_page_view.class.php");
 
 require_once(dirname(__FILE__) . "/../site_config_factory.class.php");
 
@@ -51,6 +52,8 @@ class ViewFactory {
             return new ContactView(array(), $widgets);
         } else if ($action === "contact_submit") {
             return new ContactSubmitView($_POST, $widgets);
+        } else if ($action === "videos") {
+            return new VideosPageView(array("selected_video" => $this->optional_element(0, 1, $params)), $widgets);
         }
         
         // Bad request: redirect to front page
@@ -59,6 +62,11 @@ class ViewFactory {
         header("Location: " . \SiteConfigFactory::get()->get_site_config()->base_uri());
         
         throw new \InvalidArgumentException("No view for action '{$action}'");
+    }
+    
+    
+    private function optional_element($key, $default, $storage) {
+        return (isset($storage[$key]) ? $storage[$key] : $default);
     }
     
     

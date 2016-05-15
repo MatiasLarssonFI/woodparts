@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 20, 2016 at 07:28 PM
--- Server version: 5.5.47-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.14
+-- Generation Time: May 06, 2016 at 11:38 PM
+-- Server version: 5.5.49-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `gallery_image` (
   `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `time_created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=45 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=48 ;
 
 -- --------------------------------------------------------
 
@@ -103,7 +103,51 @@ CREATE TABLE IF NOT EXISTS `ui_text` (
   `time_created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   UNIQUE KEY `lang_code_uniq` (`language`,`code`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=64 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=73 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `videos_page_video`
+--
+
+CREATE TABLE IF NOT EXISTS `videos_page_video` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` text COLLATE utf8_swedish_ci NOT NULL,
+  `description` text COLLATE utf8_swedish_ci NOT NULL,
+  `thumb_url` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `is_published` tinyint(1) NOT NULL DEFAULT '1',
+  `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `time_created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=4 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `video_file`
+--
+
+CREATE TABLE IF NOT EXISTS `video_file` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `videos_page_video_id` int(11) NOT NULL,
+  `video_url` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `mime_subtype` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
+  `time_edited` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `time_created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  KEY `videos_page_video_id` (`videos_page_video_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=5 ;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `video_file`
+--
+ALTER TABLE `video_file`
+  ADD CONSTRAINT `video_file_ibfk_1` FOREIGN KEY (`videos_page_video_id`) REFERENCES `videos_page_video` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
