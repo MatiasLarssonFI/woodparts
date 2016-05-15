@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 03, 2016 at 10:32 PM
+-- Generation Time: May 15, 2016 at 09:50 PM
 -- Server version: 5.5.49-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.16
 
@@ -100,7 +100,7 @@ INSERT INTO `service` (`id`, `title`, `text`, `img_uri`, `gallery_img_id`, `time
 --
 
 INSERT INTO `ui_text` (`id`, `language`, `code`, `content`, `time_edited`, `time_created`) VALUES
-(1, 'fi', 'FRONT_PAGE_PROMO', 'Hyödynnämme mm. cnc-tekniikkaa ja puun muotopuristusta.', '2016-03-09 20:16:50', '2016-03-05 22:00:00'),
+(1, 'fi', 'FRONT_PAGE_PROMO', 'Kehitämme ja valmistamme prototyypejä ja sisustusosia puusta. Hyödynnämme mm. cnc-tekniikkaa ja puun muotopuristusta.', '2016-05-15 18:35:20', '2016-03-05 22:00:00'),
 (2, 'se', 'FRONT_PAGE_PROMO', 'Vi utvecklar och tillverkar prototyper och inredningsdetaljer av trä. Cnc-fräsning och vakumlaminering ar några av de tekniker vi tillämpar.', '2016-03-06 16:17:29', '2016-03-05 22:00:00'),
 (3, 'en', 'FRONT_PAGE_PROMO', 'We develop and manufacture prototypes and furniture parts from various wood materials. Cnc-routing and vacuum veneering are some of the technics at our disposal.', '2016-03-06 16:17:35', '2016-03-05 22:00:00'),
 (4, 'fi', 'FRONT_PAGE_TITLE', 'Solutions for wood design', '2016-03-06 16:15:39', '2016-03-05 22:00:00'),
@@ -170,8 +170,29 @@ INSERT INTO `ui_text` (`id`, `language`, `code`, `content`, `time_edited`, `time
 (68, 'en', 'NAV_VIDEOS', 'Videos', '2016-05-02 18:07:29', '2016-03-11 20:00:00'),
 (69, 'se', 'NAV_VIDEOS', 'Video', '2016-05-02 18:07:44', '2016-03-11 20:00:00'),
 (70, 'fi', 'VIDEOS_LIST_CAPTION', 'Valitse video', '2016-05-02 21:00:00', '0000-00-00 00:00:00'),
-(71, 'se', 'VIDEOS_LIST_CAPTION', 'Välja video', '2016-05-02 21:00:00', '0000-00-00 00:00:00'),
+(71, 'se', 'VIDEOS_LIST_CAPTION', 'Välj video', '2016-05-15 18:34:41', '0000-00-00 00:00:00'),
 (72, 'en', 'VIDEOS_LIST_CAPTION', 'Select video', '2016-05-02 21:00:00', '0000-00-00 00:00:00');
+
+--
+-- Dumping data for table `videos_page_video`
+--
+
+INSERT INTO `videos_page_video` (`id`, `name`, `description`, `thumb_url`, `is_published`, `time_edited`, `time_created`) VALUES
+(1, '{\n    "fi" : "Testivideo 2 ääkkösiä testaillen",\n    "se" : "Test video två *&&%21</>",\n    "en" : "Test video two"\n}', '{\n    "fi" : "Lentokoneen ohjaamossa",\n    "se" : "Heftig flyg",\n    "en" : "Very fly"\n}', '/data/img/video/thumb/testvideo2.png', 1, '2016-05-07 10:12:07', '2016-04-26 21:00:00'),
+(2, '{\n    "fi" : "Testivideo 3 24 % alv Œœ",\n    "se" : "Test video tre",\n    "en" : "Test video three"\n}', '{\n    "fi" : "On kaverilla otsaa",\n    "se" : "Jösses, vad fa-",\n    "en" : "I don''t even"\n}', '/data/img/video/thumb/testvideo3.png', 1, '2016-05-07 10:49:47', '2016-04-26 21:00:00'),
+(3, '{\r\n    "fi" : "Testivideo",\r\n    "se" : "Test video",\r\n    "en" : "Test video"\r\n}', '{\r\n    "fi" : "Joulupukki mulkoilee pahasti",\r\n    "se" : "Jultonten tittar elakt",\r\n    "en" : "Santa Claus has no soul"\r\n}', '/data/img/video/thumb/testvideo.png', 1, '2016-05-04 15:15:37', '2016-04-26 21:00:00'),
+(4, '{\r\n    "fi" : "Hii ja hoi",\r\n    "se" : "Hii ja hei",\r\n    "en" : "Hey ohoy"\r\n}', '{\r\n    "fi" : "Töitä tekee pihalla tämä mies",\r\n    "se" : "Han jobbar på trägård",\r\n    "en" : "Practical woodworking"\r\n}', '/data/img/video/thumb/testivideo_webtest.png', 1, '2016-05-11 19:34:20', '2016-04-26 21:00:00');
+
+--
+-- Dumping data for table `video_file`
+--
+
+INSERT INTO `video_file` (`id`, `videos_page_video_id`, `video_url`, `mime_subtype`, `time_edited`, `time_created`) VALUES
+(1, 1, '/data/video/videospage/testvideo2.mp4', 'mp4', '2016-05-06 19:50:29', '2016-04-26 21:00:00'),
+(2, 2, '/data/video/videospage/testvideo3.mp4', 'mp4', '2016-05-06 19:50:31', '2016-04-26 21:00:00'),
+(3, 3, '/data/video/videospage/testvideo.mp4', 'mp4', '2016-05-06 19:50:33', '2016-04-26 21:00:00'),
+(4, 4, '/data/video/videospage/testvideo_webtest.mp4', 'mp4', '2016-05-06 19:50:33', '2016-04-26 21:00:00'),
+(5, 4, '/data/video/videospage/testvideo_webtest.webm', 'webm', '2016-05-11 19:34:43', '2016-04-26 21:00:00');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
