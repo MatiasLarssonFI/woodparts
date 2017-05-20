@@ -1,3 +1,20 @@
+RewriteEngine On
+
+# lu-pa.fi document root
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^lu-pa.fi$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.lu-pa.fi$
+RewriteCond %{REQUEST_URI} !lupa_site/
+RewriteRule (.*) /lupa_site/$1 [L]
+
+# /lu-pa.fi document root
+
+
+# http -> https
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+
 # The rewrite rules:
 # 
 # If the first URI part has the length of two characters, those characters
@@ -16,8 +33,6 @@
 # other to be present. Action parameters may only appear if the action
 # is present.
 # 
-
-RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
