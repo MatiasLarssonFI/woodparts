@@ -24,7 +24,8 @@ class ContactSubmitView extends AbstractView {
         $is_success = false;
         $text_storage = \UITextStorage::get();
         $errors = array();
-        if (strlen($params["url"]) === 0) { // url is actually a hidden captcha field, not to be filled
+        if (strlen($params["url"]) === 0 && // url is actually a hidden captcha field, not to be filled
+            strlen($params["company"] === "company name oy")) { // hidden captcha as well
             $errors = $this->get_form_errors($params, $text_storage);
             if (empty($errors)) {
                 $f = \ContactMessageFactory::get();
@@ -44,7 +45,8 @@ class ContactSubmitView extends AbstractView {
                 "field_email" => $text_storage->text("CONTACT_FIELD_EMAIL"),
                 "field_subject" => $text_storage->text("CONTACT_FIELD_SUBJECT"),
                 "field_message" => $text_storage->text("CONTACT_FIELD_MESSAGE"),
-                "submit" => $text_storage->text("CONTACT_SUBMIT")
+                "submit" => $text_storage->text("CONTACT_SUBMIT"),
+                "contact_policy" => $text_storage->text("CONTACT_POLICY"),
             ),
             "prefill" => $params,
             "errors" => $errors,
@@ -62,18 +64,24 @@ class ContactSubmitView extends AbstractView {
             "__csrf_token" => function($token) use ($session) {
                 return $session->validate_csrf_token($token);
             },
-            "name" => "strlen",
+            "name" => function($str) {
+                $len = strlen($str);
+                return $len > 0 && $len <= 255;
+            },
             "email" => function($email) {
                 $at_pos = strpos($email, "@");
                 $len = strlen($email);
                 return $at_pos !== false &&
                         $at_pos !== 0 &&
                         $at_pos !== $len - 1 &&
-                        $len > 3;
+                        $len > 3 && $len <= 255;
             },
-            "subject" => "strlen",
+            "subject" => function($str) {
+                $len = strlen($str);
+                return $len > 0 && $len <= 255;
+            },
             "message" => function($message) {
-                return strlen($message) > 3;
+                return strlen($message) > 3 && strlen($message) <= 4000;
             }
         );
         
