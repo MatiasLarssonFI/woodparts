@@ -148,18 +148,18 @@ INSERT INTO `ui_text` (`id`, `language`, `code`, `content`, `time_edited`, `time
 (46, 'fi', 'CONTACT_SUBMIT_TEXT', 'Kiitos yhteydenotostasi. Olemme sinuun yhteydessä pian.', NULL, '2016-04-02 21:00:00'),
 (47, 'se', 'CONTACT_SUBMIT_TEXT', 'Tack. Vi kommer att vara i kontakt med dig snart.', '2016-04-13 17:40:42', '2016-04-02 21:00:00'),
 (48, 'en', 'CONTACT_SUBMIT_TEXT', 'Thank you. We''ll be in touch with you soon.', '2016-04-03 16:28:03', '2016-04-02 21:00:00'),
-(49, 'fi', 'CONTACT_FIELD_ERROR_NAME', 'Nimi ei voi olla tyhjä.', NULL, '2016-04-02 18:00:00'),
+(49, 'fi', 'CONTACT_FIELD_ERROR_NAME', 'Nimi ei voi olla tyhjä eikä yli 255 merkkiä pitkä.', NULL, '2016-04-02 18:00:00'),
 (50, 'fi', 'CONTACT_FIELD_ERROR_EMAIL', 'Sähköpostiosoite on oltava oikea.', NULL, '2016-04-02 18:00:00'),
-(51, 'fi', 'CONTACT_FIELD_ERROR_SUBJECT', 'Aihe ei voi olla tyhjä.', NULL, '2016-04-02 18:00:00'),
-(52, 'fi', 'CONTACT_FIELD_ERROR_MESSAGE', 'Viestissä on oltava enemmän kuin kolme merkkiä.', NULL, '0000-00-00 00:00:00'),
-(53, 'en', 'CONTACT_FIELD_ERROR_NAME', 'Your name can´t be empty.', NULL, '2016-04-02 15:00:00'),
+(51, 'fi', 'CONTACT_FIELD_ERROR_SUBJECT', 'Aihe ei voi olla tyhjä eikä yli 255 merkkiä pitkä.', NULL, '2016-04-02 18:00:00'),
+(52, 'fi', 'CONTACT_FIELD_ERROR_MESSAGE', 'Viestin on oltava vähintään neljä merkkiä ja enintään 4000 merkkiä pitkä.', NULL, '0000-00-00 00:00:00'),
+(53, 'en', 'CONTACT_FIELD_ERROR_NAME', 'Your name can´t be empty or over 255 characters long.', NULL, '2016-04-02 15:00:00'),
 (54, 'en', 'CONTACT_FIELD_ERROR_EMAIL', 'Your e-mail address must be a real address.', NULL, '2016-04-02 15:00:00'),
-(55, 'en', 'CONTACT_FIELD_ERROR_SUBJECT', 'The subject can´t be empty.', NULL, '2016-04-02 15:00:00'),
-(56, 'en', 'CONTACT_FIELD_ERROR_MESSAGE', 'The message must be longer than three characters.', NULL, '0000-00-00 00:00:00'),
-(57, 'se', 'CONTACT_FIELD_ERROR_NAME', 'Ditt namn kan inte vara tom.', NULL, '2016-04-02 15:00:00'),
+(55, 'en', 'CONTACT_FIELD_ERROR_SUBJECT', 'The subject can´t be empty or over 255 characters long.', NULL, '2016-04-02 15:00:00'),
+(56, 'en', 'CONTACT_FIELD_ERROR_MESSAGE', 'The message must be longer than four characters and shorter than 4000 characters.', NULL, '0000-00-00 00:00:00'),
+(57, 'se', 'CONTACT_FIELD_ERROR_NAME', 'Ditt namn kan inte vara tom eller längre än 255 tecken.', NULL, '2016-04-02 15:00:00'),
 (58, 'se', 'CONTACT_FIELD_ERROR_EMAIL', 'Din e-postadresss måste vara en riktig e-postaddress.', NULL, '2016-04-02 15:00:00'),
-(59, 'se', 'CONTACT_FIELD_ERROR_SUBJECT', 'Ämnet kan inte vara tom', NULL, '2016-04-02 15:00:00'),
-(60, 'se', 'CONTACT_FIELD_ERROR_MESSAGE', 'Meddelandet måste vara längre än tre tecken.', NULL, '0000-00-00 00:00:00'),
+(59, 'se', 'CONTACT_FIELD_ERROR_SUBJECT', 'Ämnet kan inte vara tom eller längre än 255 tecken.', NULL, '2016-04-02 15:00:00'),
+(60, 'se', 'CONTACT_FIELD_ERROR_MESSAGE', 'Meddelandet måste vara längre än fyra tecken och kortare än 4000 tecken.', NULL, '0000-00-00 00:00:00'),
 (61, 'fi', 'CONTACT_FIELD_ERROR___CSRF_TOKEN', 'Pahoittelumme, mutta lomake on vanhentunut. Ole hyvä ja yritä uudelleen.', '2016-04-15 19:59:42', '2016-04-13 21:00:00'),
 (62, 'en', 'CONTACT_FIELD_ERROR___CSRF_TOKEN', 'We''re sorry but the form has expired. Please try again.', '2016-04-15 19:58:48', '2016-04-13 21:00:00'),
 (63, 'se', 'CONTACT_FIELD_ERROR___CSRF_TOKEN', 'Vi ber om ursäkt men formen har löpt ut. Var god försök igen.', '2016-04-15 19:58:51', '2016-04-13 21:00:00'),
@@ -193,6 +193,13 @@ INSERT INTO `video_file` (`id`, `videos_page_video_id`, `video_url`, `mime_subty
 (3, 3, '/data/video/videospage/testvideo.mp4', 'mp4', '2016-05-06 19:50:33', '2016-04-26 21:00:00'),
 (4, 4, '/data/video/videospage/testvideo_webtest.mp4', 'mp4', '2016-05-06 19:50:33', '2016-04-26 21:00:00'),
 (5, 4, '/data/video/videospage/testvideo_webtest.webm', 'webm', '2016-05-11 19:34:43', '2016-04-26 21:00:00');
+
+-- 200530
+
+INSERT INTO `ui_text` (`language`, `code`, `content`, `time_edited`, `time_created`) VALUES
+('fi', 'CONTACT_POLICY', 'Käytämme yhteystietojasi vain yhteydenpitoon. Säilytämme tietosi lakisääteisten vaatimusten mukaisesti.', NULL, '2018-05-27 19:00:00'),
+('sv', 'CONTACT_POLICY', 'Vi använder bara dina kontaktuppgifter till att kontakta dig. Vi lagrar din information i enlighet med lagstadgade krav.', NULL, '2018-05-27 19:00:00'),
+('en', 'CONTACT_POLICY', 'We only use your contact information to contact you. We store your information in compliance with statutory requirements.', NULL, '2018-05-27 19:00:00');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
